@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RipCat — Tide Predictions for People Who Live by the Water</title>
+  <meta name="description" content="Beautiful, glanceable tide predictions for iPhone, Apple Watch, Mac, and widgets. Built by a surfer in Santa Barbara.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ocean-teal:#2EC4B6; --deep-navy:#1C1A2E; --sandy:#FAF5EB; --sandy-dark:#F0E8D8; --text:#1C1A2E; --text-muted:#5A5872; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',-apple-system,sans-serif;background:var(--sandy);color:var(--text);-webkit-font-smoothing:antialiased}
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;background:linear-gradient(180deg,var(--deep-navy) 0%,#2A2845 40%,var(--ocean-teal) 100%);color:#fff;position:relative;overflow:hidden}
+    .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%23FAF5EB' d='M0,64 C360,120 720,0 1080,64 C1260,96 1380,80 1440,64 L1440,120 L0,120 Z'/%3E%3C/svg%3E") no-repeat bottom;background-size:cover}
+    .logo{font-size:4rem;margin-bottom:.5rem}
+    h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:700;margin-bottom:.5rem;letter-spacing:-.02em}
+    .tagline{font-size:clamp(1.1rem,2.5vw,1.4rem);opacity:.85;max-width:500px;line-height:1.5;margin-bottom:2rem}
+    .badge-row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;z-index:1}
+    .badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:.6rem 1.2rem;font-size:.9rem;font-weight:500}
+    .features{max-width:900px;margin:0 auto;padding:5rem 2rem}
+    .features h2{text-align:center;font-size:2rem;margin-bottom:3rem}
+    .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+    .feature-card{background:#fff;border-radius:16px;padding:2rem;box-shadow:0 2px 20px rgba(28,26,46,.06);transition:transform .2s}
+    .feature-card:hover{transform:translateY(-4px)}
+    .feature-icon{font-size:2rem;margin-bottom:.75rem}
+    .feature-card h3{font-size:1.1rem;margin-bottom:.5rem}
+    .feature-card p{color:var(--text-muted);font-size:.95rem;line-height:1.5}
+    .pricing{background:#fff;padding:5rem 2rem}
+    .pricing h2{text-align:center;font-size:2rem;margin-bottom:3rem}
+    .pricing-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:700px;margin:0 auto}
+    .pricing-card{border-radius:16px;padding:2.5rem 2rem;text-align:center}
+    .pricing-card.free{background:var(--sandy);border:2px solid var(--sandy-dark)}
+    .pricing-card.pro{background:linear-gradient(135deg,var(--deep-navy),#2A2845);color:#fff}
+    .pricing-card h3{font-size:1.3rem;margin-bottom:.25rem}
+    .price{font-size:2.5rem;font-weight:700;margin:1rem 0 .25rem}
+    .price-sub{font-size:.85rem;opacity:.7;margin-bottom:1.5rem}
+    .pricing-card ul{list-style:none;text-align:left}
+    .pricing-card ul li{padding:.4rem 0;font-size:.95rem}
+    .pricing-card ul li::before{content:'✓ ';color:var(--ocean-teal);font-weight:600}
+    .cta{text-align:center;padding:5rem 2rem}
+    .cta h2{font-size:2rem;margin-bottom:1rem}
+    .cta p{color:var(--text-muted);margin-bottom:2rem;font-size:1.1rem}
+    .app-store-btn{display:inline-block;background:var(--deep-navy);color:#fff;text-decoration:none;padding:1rem 2rem;border-radius:12px;font-weight:600;font-size:1.1rem;transition:background .2s}
+    .app-store-btn:hover{background:#2A2845}
+    footer{text-align:center;padding:2rem;color:var(--text-muted);font-size:.85rem;border-top:1px solid var(--sandy-dark)}
+    footer a{color:var(--ocean-teal);text-decoration:none}
+  </style>
+</head>
+<body>
+<section class="hero">
+  <div class="logo">🐱🌊</div>
+  <h1>RipCat</h1>
+  <p class="tagline">Beautiful tide predictions for surfers, fishermen, boaters, and anyone who lives by the water.</p>
+  <div class="badge-row">
+    <span class="badge">📱 iPhone</span>
+    <span class="badge">⌚ Apple Watch</span>
+    <span class="badge">💻 Mac</span>
+    <span class="badge">🔲 Widgets</span>
+  </div>
+</section>
+<section class="features">
+  <h2>Everything the ocean owes you</h2>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="feature-icon">📊</div><h3>Interactive Tide Charts</h3><p>Scrub through the day's tides with your finger. See exact heights at any moment.</p></div>
+    <div class="feature-card"><div class="feature-icon">⌚</div><h3>Watch Complications</h3><p>Current tide on your wrist. Every complication family, beautifully designed.</p></div>
+    <div class="feature-card"><div class="feature-icon">🗺️</div><h3>Every NOAA Station</h3><p>Map view with pins for every tide prediction station in the US. Tap to add favorites.</p></div>
+    <div class="feature-card"><div class="feature-icon">🌅</div><h3>Sun Times</h3><p>First light, sunrise, sunset, last light. Know when to paddle out and when to head in.</p></div>
+    <div class="feature-card"><div class="feature-icon">🔲</div><h3>Lock Screen Widgets</h3><p>Glance at your tide without unlocking. Small, medium, and large widget families.</p></div>
+    <div class="feature-card"><div class="feature-icon">🗓️</div><h3>Printable Tide Calendars</h3><p>Monthly tide calendars with your own photos. Order printed copies shipped to your door. <em>Coming soon.</em></p></div>
+  </div>
+</section>
+<section class="pricing">
+  <h2>Simple pricing</h2>
+  <div class="pricing-cards">
+    <div class="pricing-card free">
+      <h3>Free</h3><div class="price">$0</div><div class="price-sub">forever</div>
+      <ul><li>1 favorite station</li><li>Tide predictions & charts</li><li>Sun times</li><li>Home screen widget</li></ul>
+    </div>
+    <div class="pricing-card pro">
+      <h3>RipCat Pro</h3><div class="price">$2.99</div><div class="price-sub">/month or $19.99/year</div>
+      <ul><li>Unlimited favorites</li><li>All watch complications</li><li>Lock screen widgets</li><li>Share & export charts</li><li>Printable tide calendars</li><li>iCloud sync</li></ul>
+    </div>
+  </div>
+</section>
+<section class="cta">
+  <h2>The ocean runs on its own clock.</h2>
+  <p>RipCat helps you keep up.</p>
+  <a href="#" class="app-store-btn">Coming Soon to the App Store</a>
+</section>
+<footer>
+  <p>© 2026 RipCat. Built in Santa Barbara. 🏄</p>
+  <p><a href="mailto:hello@ripcat.dev">hello@ripcat.dev</a></p>
+</footer>
+</body>
+</html>
