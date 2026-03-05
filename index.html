@@ -3,94 +3,571 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RipCat — Tide Predictions for People Who Live by the Water</title>
-  <meta name="description" content="Beautiful, glanceable tide predictions for iPhone, Apple Watch, Mac, and widgets. Built by a surfer in Santa Barbara.">
+  <title>RipCat — Know Your Tides, Surf Central Coast</title>
+  <meta name="description" content="Handcrafted tide predictions for Central Coast surfers. Born in Santa Barbara, tested at Rincon, perfected for real sessions.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Caveat:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root { --ocean-teal:#2EC4B6; --deep-navy:#1C1A2E; --sandy:#FAF5EB; --sandy-dark:#F0E8D8; --text:#1C1A2E; --text-muted:#5A5872; }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Inter',-apple-system,sans-serif;background:var(--sandy);color:var(--text);-webkit-font-smoothing:antialiased}
-    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;background:linear-gradient(180deg,var(--deep-navy) 0%,#2A2845 40%,var(--ocean-teal) 100%);color:#fff;position:relative;overflow:hidden}
-    .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%23FAF5EB' d='M0,64 C360,120 720,0 1080,64 C1260,96 1380,80 1440,64 L1440,120 L0,120 Z'/%3E%3C/svg%3E") no-repeat bottom;background-size:cover}
-    .logo{font-size:4rem;margin-bottom:.5rem}
-    h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:700;margin-bottom:.5rem;letter-spacing:-.02em}
-    .tagline{font-size:clamp(1.1rem,2.5vw,1.4rem);opacity:.85;max-width:500px;line-height:1.5;margin-bottom:2rem}
-    .badge-row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;z-index:1}
-    .badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:.6rem 1.2rem;font-size:.9rem;font-weight:500}
-    .features{max-width:900px;margin:0 auto;padding:5rem 2rem}
-    .features h2{text-align:center;font-size:2rem;margin-bottom:3rem}
-    .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
-    .feature-card{background:#fff;border-radius:16px;padding:2rem;box-shadow:0 2px 20px rgba(28,26,46,.06);transition:transform .2s}
-    .feature-card:hover{transform:translateY(-4px)}
-    .feature-icon{font-size:2rem;margin-bottom:.75rem}
-    .feature-card h3{font-size:1.1rem;margin-bottom:.5rem}
-    .feature-card p{color:var(--text-muted);font-size:.95rem;line-height:1.5}
-    .pricing{background:#fff;padding:5rem 2rem}
-    .pricing h2{text-align:center;font-size:2rem;margin-bottom:3rem}
-    .pricing-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:700px;margin:0 auto}
-    .pricing-card{border-radius:16px;padding:2.5rem 2rem;text-align:center}
-    .pricing-card.free{background:var(--sandy);border:2px solid var(--sandy-dark)}
-    .pricing-card.pro{background:linear-gradient(135deg,var(--deep-navy),#2A2845);color:#fff}
-    .pricing-card h3{font-size:1.3rem;margin-bottom:.25rem}
-    .price{font-size:2.5rem;font-weight:700;margin:1rem 0 .25rem}
-    .price-sub{font-size:.85rem;opacity:.7;margin-bottom:1.5rem}
-    .pricing-card ul{list-style:none;text-align:left}
-    .pricing-card ul li{padding:.4rem 0;font-size:.95rem}
-    .pricing-card ul li::before{content:'✓ ';color:var(--ocean-teal);font-weight:600}
-    .cta{text-align:center;padding:5rem 2rem}
-    .cta h2{font-size:2rem;margin-bottom:1rem}
-    .cta p{color:var(--text-muted);margin-bottom:2rem;font-size:1.1rem}
-    .app-store-btn{display:inline-block;background:var(--deep-navy);color:#fff;text-decoration:none;padding:1rem 2rem;border-radius:12px;font-weight:600;font-size:1.1rem;transition:background .2s}
-    .app-store-btn:hover{background:#2A2845}
-    footer{text-align:center;padding:2rem;color:var(--text-muted);font-size:.85rem;border-top:1px solid var(--sandy-dark)}
-    footer a{color:var(--ocean-teal);text-decoration:none}
+    :root { 
+      --ocean-blue: #2e86ab;
+      --sand-warm: #f7f3e3;
+      --sand-dark: #e8dcc0;
+      --kelp-green: #4a5c3a;
+      --sunset-orange: #f18f01;
+      --driftwood: #8b7355;
+      --text-charcoal: #2c2c2c;
+      --text-muted: #666;
+      --off-white: #faf8f3;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--sand-warm);
+      color: var(--text-charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Hero section with coastal vibes */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      background: linear-gradient(135deg, 
+        var(--ocean-blue) 0%, 
+        #4a90a4 35%, 
+        var(--sand-warm) 65%, 
+        var(--sunset-orange) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(241, 143, 1, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74, 144, 164, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(139, 115, 85, 0.2) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+    
+    .logo-section {
+      margin-bottom: 2rem;
+    }
+    
+    .rip-logo {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      animation: gentle-bob 4s ease-in-out infinite;
+    }
+    
+    @keyframes gentle-bob {
+      0%, 100% { transform: translateY(0px) rotate(-2deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+    
+    .site-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: clamp(3rem, 8vw, 5rem);
+      color: var(--off-white);
+      text-shadow: 3px 3px 0px var(--kelp-green), 2px 2px 10px rgba(0,0,0,0.3);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .surf-tagline {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      color: var(--sand-warm);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    }
+    
+    .location-badge {
+      display: inline-block;
+      background: rgba(139, 115, 85, 0.8);
+      color: var(--off-white);
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    
+    .coastal-image-hero {
+      width: 300px;
+      height: 200px;
+      background: linear-gradient(45deg, var(--ocean-blue), var(--sand-warm));
+      border-radius: 20px;
+      margin: 2rem auto;
+      border: 4px solid var(--off-white);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Caveat', cursive;
+      font-size: 1.2rem;
+      color: var(--text-charcoal);
+      position: relative;
+    }
+    
+    .coastal-image-hero::after {
+      content: "🐱🏄‍♂️";
+      position: absolute;
+      font-size: 3rem;
+      bottom: -10px;
+      right: -10px;
+    }
+    
+    /* Driftwood section divider */
+    .section-break {
+      height: 120px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%238b7355' d='M0,32 C240,80 480,16 720,48 C960,80 1200,16 1440,48 L1440,120 L0,120 Z'/%3E%3Cpath fill='%23f7f3e3' d='M0,64 C360,120 720,0 1080,64 C1260,96 1380,80 1440,64 L1440,120 L0,120 Z'/%3E%3C/svg%3E") no-repeat bottom;
+      background-size: cover;
+    }
+    
+    /* Spots section - authentic surf culture */
+    .spots-section {
+      background: var(--off-white);
+      padding: 4rem 2rem;
+      position: relative;
+    }
+    
+    .spots-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--driftwood) 0px,
+        var(--driftwood) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      opacity: 0.3;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--kelp-green);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 0px var(--sand-dark);
+    }
+    
+    .section-subtitle {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      color: var(--driftwood);
+      font-weight: 600;
+    }
+    
+    .coastal-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .spot-card {
+      background: var(--sand-warm);
+      border-radius: 15px;
+      padding: 1.5rem;
+      border: 3px solid var(--sand-dark);
+      box-shadow: 0 5px 20px rgba(139, 115, 85, 0.15);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    
+    .spot-card:hover {
+      transform: translateY(-5px) rotate(1deg);
+    }
+    
+    .spot-image {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, var(--ocean-blue), var(--sunset-orange));
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--off-white);
+      position: relative;
+      border: 2px solid var(--driftwood);
+    }
+    
+    .spot-mascot {
+      position: absolute;
+      bottom: -15px;
+      right: -10px;
+      font-size: 2.5rem;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    }
+    
+    .spot-title {
+      font-family: 'Caveat', cursive;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--kelp-green);
+      margin-bottom: 0.5rem;
+    }
+    
+    .spot-description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    /* Features with organic feel */
+    .features-section {
+      background: linear-gradient(45deg, var(--sand-warm) 0%, var(--sand-dark) 100%);
+      padding: 4rem 2rem;
+      position: relative;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .feature-card {
+      background: var(--off-white);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 3px solid var(--driftwood);
+      box-shadow: 0 6px 25px rgba(139, 115, 85, 0.2);
+      transform: rotate(-1deg);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:nth-child(even) {
+      transform: rotate(1deg);
+    }
+    
+    .feature-card:hover {
+      transform: rotate(0deg) scale(1.05);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .feature-title {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--kelp-green);
+      margin-bottom: 0.5rem;
+    }
+    
+    .feature-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    
+    /* CTA section with sunset vibes */
+    .cta-section {
+      background: linear-gradient(135deg, var(--sunset-orange) 0%, var(--ocean-blue) 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+    
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,0.05) 0%, transparent 50%);
+    }
+    
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .cta-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--off-white);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .cta-subtitle {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      color: var(--sand-warm);
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+    
+    .app-store-btn {
+      display: inline-block;
+      background: var(--kelp-green);
+      color: var(--off-white);
+      padding: 1.2rem 2.5rem;
+      border-radius: 15px;
+      text-decoration: none;
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      font-weight: 700;
+      border: 3px solid var(--off-white);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      transform: rotate(-1deg);
+    }
+    
+    .app-store-btn:hover {
+      transform: rotate(0deg) scale(1.05);
+      background: var(--driftwood);
+    }
+    
+    /* Footer with beachy vibes */
+    .footer {
+      background: var(--kelp-green);
+      color: var(--sand-warm);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+    
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%234a5c3a' d='M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z'/%3E%3C/svg%3E") no-repeat top;
+      background-size: cover;
+    }
+    
+    .footer-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .footer-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--sand-warm);
+    }
+    
+    .footer-text {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-link {
+      color: var(--sunset-orange);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .coastal-gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero {
+        padding: 1rem;
+      }
+      
+      .coastal-image-hero {
+        width: 250px;
+        height: 150px;
+      }
+    }
   </style>
 </head>
 <body>
+
 <section class="hero">
-  <div class="logo">🐱🌊</div>
-  <h1>RipCat</h1>
-  <p class="tagline">Beautiful tide predictions for surfers, fishermen, boaters, and anyone who lives by the water.</p>
-  <div class="badge-row">
-    <span class="badge">📱 iPhone</span>
-    <span class="badge">⌚ Apple Watch</span>
-    <span class="badge">💻 Mac</span>
-    <span class="badge">🔲 Widgets</span>
+  <div class="hero-content">
+    <div class="logo-section">
+      <div class="rip-logo">🐱🌊</div>
+      <h1 class="site-title">RipCat</h1>
+      <p class="surf-tagline">Know your tides, catch more waves</p>
+      <div class="location-badge">🏄‍♂️ Born in Santa Barbara 🏄‍♀️</div>
+    </div>
+    
+    <div class="coastal-image-hero">
+      RipCat on the beach with surfboard
+      <br/>🏖️ Real Central Coast vibes
+    </div>
   </div>
 </section>
-<section class="features">
-  <h2>Everything the ocean owes you</h2>
+
+<div class="section-break"></div>
+
+<section class="spots-section">
+  <div class="section-header">
+    <h2 class="section-title">From Rincon to Morro Bay</h2>
+    <p class="section-subtitle">Tide data for every Central Coast session</p>
+  </div>
+  
+  <div class="coastal-gallery">
+    <div class="spot-card">
+      <div class="spot-image">
+        RipCat at Rincon Point
+        <br/>Perfect right-hand point break
+        <div class="spot-mascot">🐱🏄‍♂️</div>
+      </div>
+      <h3 class="spot-title">Rincon Point</h3>
+      <p class="spot-description">The Queen of the Coast. When it's on, it's on. RipCat knows exactly when the tide's right for those long rides.</p>
+    </div>
+    
+    <div class="spot-card">
+      <div class="spot-image">
+        RipCat at Santa Barbara Harbor
+        <br/>Checking tide charts on pier
+        <div class="spot-mascot">🐱📱</div>
+      </div>
+      <h3 class="spot-title">Harbor & Leadbetter</h3>
+      <p class="spot-description">Protected spots for smaller swells. Perfect for dawn patrols and teaching the groms when the tide's right.</p>
+    </div>
+    
+    <div class="spot-card">
+      <div class="spot-image">
+        RipCat at Surf Beach
+        <br/>Watching sunset with board
+        <div class="spot-mascot">🐱🌅</div>
+      </div>
+      <h3 class="spot-title">Surf Beach</h3>
+      <p class="spot-description">Raw Lompoc power. Check the tide charts before paddling out - this place demands respect and good timing.</p>
+    </div>
+    
+    <div class="spot-card">
+      <div class="spot-image">
+        RipCat at Morro Bay
+        <br/>On boat with Apple Watch
+        <div class="spot-mascot">🐱⌚</div>
+      </div>
+      <h3 class="spot-title">Morro Bay</h3>
+      <p class="spot-description">Classic Central Coast. Whether you're fishing the harbor or surfing the beach, tide timing is everything.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="section-header">
+    <h2 class="section-title">Built by surfers, for surfers</h2>
+    <p class="section-subtitle">Real features for real sessions</p>
+  </div>
+  
   <div class="feature-grid">
-    <div class="feature-card"><div class="feature-icon">📊</div><h3>Interactive Tide Charts</h3><p>Scrub through the day's tides with your finger. See exact heights at any moment.</p></div>
-    <div class="feature-card"><div class="feature-icon">⌚</div><h3>Watch Complications</h3><p>Current tide on your wrist. Every complication family, beautifully designed.</p></div>
-    <div class="feature-card"><div class="feature-icon">🗺️</div><h3>Every NOAA Station</h3><p>Map view with pins for every tide prediction station in the US. Tap to add favorites.</p></div>
-    <div class="feature-card"><div class="feature-icon">🌅</div><h3>Sun Times</h3><p>First light, sunrise, sunset, last light. Know when to paddle out and when to head in.</p></div>
-    <div class="feature-card"><div class="feature-icon">🔲</div><h3>Lock Screen Widgets</h3><p>Glance at your tide without unlocking. Small, medium, and large widget families.</p></div>
-    <div class="feature-card"><div class="feature-icon">🗓️</div><h3>Printable Tide Calendars</h3><p>Monthly tide calendars with your own photos. Order printed copies shipped to your door. <em>Coming soon.</em></p></div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3 class="feature-title">Dialed Tide Charts</h3>
+      <p class="feature-text">Swipe through the day's tides. See exactly when it's prime time or when to wait it out.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">⌚</div>
+      <h3 class="feature-title">Watch Complications</h3>
+      <p class="feature-text">Next tide right on your wrist. Perfect for those early morning sessions when you can barely see your phone.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🗺️</div>
+      <h3 class="feature-title">Every NOAA Station</h3>
+      <p class="feature-text">From Pt. Conception to Pt. Sur. All the tide stations you actually care about, not the touristy ones.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🌅</div>
+      <h3 class="feature-title">Dawn Patrol Ready</h3>
+      <p class="feature-text">First light, sunrise, the whole deal. Know when to paddle out and when the wind's gonna come up.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🔲</div>
+      <h3 class="feature-title">Lock Screen Widgets</h3>
+      <p class="feature-text">Quick tide check without even unlocking. Perfect for those "should I suit up?" moments.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🏄‍♀️</div>
+      <h3 class="feature-title">Rip Current Alerts</h3>
+      <p class="feature-text">Safety first. Advanced warnings when conditions get sketchy. Know before you go.</p>
+    </div>
   </div>
 </section>
-<section class="pricing">
-  <h2>Simple pricing</h2>
-  <div class="pricing-cards">
-    <div class="pricing-card free">
-      <h3>Free</h3><div class="price">$0</div><div class="price-sub">forever</div>
-      <ul><li>1 favorite station</li><li>Tide predictions & charts</li><li>Sun times</li><li>Home screen widget</li></ul>
-    </div>
-    <div class="pricing-card pro">
-      <h3>RipCat Pro</h3><div class="price">$2.99</div><div class="price-sub">/month or $19.99/year</div>
-      <ul><li>Unlimited favorites</li><li>All watch complications</li><li>Lock screen widgets</li><li>Share & export charts</li><li>Printable tide calendars</li><li>iCloud sync</li></ul>
-    </div>
+
+<section class="cta-section">
+  <div class="cta-content">
+    <h2 class="cta-title">The ocean runs on its own schedule</h2>
+    <p class="cta-subtitle">RipCat helps you stay in sync</p>
+    <a href="#" class="app-store-btn">Coming Soon to App Store</a>
   </div>
 </section>
-<section class="cta">
-  <h2>The ocean runs on its own clock.</h2>
-  <p>RipCat helps you keep up.</p>
-  <a href="#" class="app-store-btn">Coming Soon to the App Store</a>
-</section>
-<footer>
-  <p>© 2026 RipCat. Built in Santa Barbara. 🏄</p>
-  <p><a href="mailto:hello@ripcat.dev">hello@ripcat.dev</a></p>
+
+<footer class="footer">
+  <div class="footer-content">
+    <h3 class="footer-title">RipCat</h3>
+    <p class="footer-text">Built in Santa Barbara by people who actually surf these spots</p>
+    <p class="footer-text">
+      <a href="mailto:hello@ripcat.dev" class="footer-link">hello@ripcat.dev</a> • 
+      <a href="/privacy-policy.html" class="footer-link">Privacy Policy</a>
+    </p>
+    <p class="footer-text">© 2026 RipCat • 🏄‍♂️ Surf's up 🏄‍♀️</p>
+  </div>
 </footer>
+
 </body>
 </html>
