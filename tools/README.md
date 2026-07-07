@@ -54,7 +54,8 @@ Zone/buoy IDs that photograph well: `PZZ650` (East Santa Barbara Channel zone),
 ## Conventions
 
 - Status bar is overridden to **9:41**, full wifi/battery; appearance **dark**.
-- Raw captures land in `i/raw/` (gitignored); processed assets in `i/app-*.png`.
+- Raw captures land in `i/raw/` (gitignored); processed assets in `i/app-*.png`
+  plus WebP derivatives for the website.
 - Canonical devices: iPhone 17 Pro, iPad Pro 13-inch (M5), Apple Watch Series 11 (46mm).
 - Image budgets and alt-text rules: `styleguide-web.md` §8.
 
