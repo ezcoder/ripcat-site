@@ -3,200 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RipCat — Tide Predictions. Know the tide before you go.</title>
-<meta name="description" content="Tide predictions, buoy conditions, and marine advisories for thousands of U.S. stations. On your iPhone, Apple Watch, Mac, and Vision Pro. Made in Santa Barbara by a surfer, his daughter, and their cat, Rip.">
+<title>RipCat — A weather oracle in your pocket</title>
+<meta name="description" content="NOAA tides, live buoys, and marine advisories for thousands of U.S. stations — on iPhone, iPad, Apple Watch, and Mac. All the data you need, in your pocket.">
 <meta name="apple-itunes-app" content="app-id=6760085664">
-<meta property="og:title" content="RipCat — Tide Predictions">
+<meta property="og:title" content="RipCat — A weather oracle in your pocket">
 <meta property="og:description" content="Know the tide before you go. NOAA tides, live buoys, and marine advisories — at a glance, on every Apple device.">
 <meta property="og:image" content="https://ripcat.dev/i/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://ripcat.dev/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="RipCat — Tide Predictions">
-<meta name="twitter:description" content="Know the tide before you go. NOAA tides, live buoys, and marine advisories at a glance.">
+<meta name="twitter:title" content="RipCat — A weather oracle in your pocket">
+<meta name="twitter:description" content="NOAA tides, live buoys, and marine advisories at a glance.">
 <meta name="twitter:image" content="https://ripcat.dev/i/og-image.png">
 <link rel="canonical" href="https://ripcat.dev/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 <style>
-:root{
-  --navy:#1C1A2E; --navy-deep:#14121F; --navy-soft:#262440;
-  --sandy:#FAF5EB; --sandy-dark:#EFE7D6;
-  --teal:#008C8C; --teal-bright:#2EC4B6; --teal-glow:rgba(46,196,182,.35);
-  --coral:#E65A40; --gold:#F2C040; --seagreen:#33CC73;
-  --ink:#1C1A2E; --ink-soft:#5A5872; --paper-line:#E4DCC9;
-  --display:'Bricolage Grotesque',ui-rounded,-apple-system,sans-serif;
-  --body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--sandy);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
-img{max-width:100%;height:auto;display:block}
-a{color:var(--teal)}
-h1,h2,h3{font-family:var(--display);line-height:1.12;letter-spacing:-.015em}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-
-/* ---------- nav ---------- */
-nav{position:sticky;top:0;z-index:50;background:rgba(20,18,31,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:var(--display);font-weight:800;font-size:1.25rem;letter-spacing:.01em}
-.brand svg{display:block}
-.nav-links{display:flex;align-items:center;gap:26px}
-.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.9rem;font-weight:500}
-.nav-links a:hover{color:#fff}
-.nav-cta{background:var(--teal-bright);color:var(--navy-deep)!important;padding:.5rem 1rem;border-radius:100px;font-weight:700!important}
-.nav-cta:hover{background:#4bd8cb}
-@media(max-width:720px){.nav-links a:not(.nav-cta){display:none}}
-
-/* ---------- hero ---------- */
-.hero{background:linear-gradient(178deg,var(--navy-deep) 0%,var(--navy) 55%,#0E2E33 100%);color:#fff;position:relative;overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding-top:88px;padding-bottom:40px}
-.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-bright);margin-bottom:20px}
-.hero-kicker::before{content:'';width:26px;height:2px;background:var(--teal-bright);border-radius:2px}
-.hero h1{font-size:clamp(2.6rem,5.4vw,4.1rem);font-weight:800;margin-bottom:20px}
-.hero h1 em{font-style:normal;color:var(--teal-bright)}
-.hero-sub{font-size:clamp(1.05rem,1.6vw,1.2rem);color:rgba(255,255,255,.72);max-width:34rem;margin-bottom:32px}
+/* ---- page-specific ---- */
+.hero{padding:88px 0 72px;background:
+  radial-gradient(900px 500px at 78% 10%, rgba(61,210,232,.10), transparent 60%),
+  radial-gradient(700px 400px at 12% 85%, rgba(46,196,182,.07), transparent 60%),
+  var(--m-base)}
+.hero .inner{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.7rem,5.6vw,4.25rem);font-weight:800;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--m-accent)}
+.hero-sub{font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--m-text-2);max-width:32rem;margin-bottom:32px}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.btn-store{display:inline-flex;align-items:center;gap:12px;background:#fff;color:var(--navy-deep);text-decoration:none;padding:.85rem 1.5rem;border-radius:14px;font-weight:700;font-size:1.02rem;transition:transform .15s,box-shadow .15s;box-shadow:0 8px 28px rgba(0,0,0,.35)}
-.btn-store:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.45)}
-.btn-store .apple{font-size:1.35rem;line-height:1}
-.btn-store small{display:block;font-size:.68rem;font-weight:500;color:#6b6980;line-height:1.1;text-align:left}
-.btn-store span b{display:block;line-height:1.15}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;color:#fff;text-decoration:none;padding:.85rem 1.35rem;border-radius:14px;border:1.5px solid rgba(255,255,255,.28);font-weight:600;transition:border-color .15s,background .15s}
-.btn-ghost:hover{border-color:var(--teal-bright);background:rgba(46,196,182,.08)}
-.hero-note{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.45)}
-.hero-phone{position:relative;justify-self:center}
-.phone{width:min(300px,72vw);border-radius:44px;padding:11px;background:#0b0a12;border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.4)}
-.phone img{border-radius:34px}
-.phone::after{content:'';position:absolute;top:22px;left:50%;transform:translateX(-50%);width:86px;height:24px;background:#0b0a12;border-radius:14px}
-.hero-chart{grid-column:1/-1;margin-top:26px}
-.hero-chart svg{width:100%;height:auto;display:block}
-@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:44px;padding-top:64px}.hero-phone{order:2}}
+.hero-note{margin-top:22px;font-size:.8125rem;color:var(--m-text-3)}
+.hero-media{justify-self:center}
+.hero-metrics{margin-top:64px}
+.metrics-cap{font-size:.75rem;color:var(--m-text-3);margin-top:14px;text-align:center}
+@media(max-width:900px){.hero .inner{grid-template-columns:1fr;gap:44px}.hero{padding-top:56px}}
 
-/* ---------- trust strip ---------- */
-.trust{background:var(--navy-deep);color:rgba(255,255,255,.6);border-top:1px solid rgba(255,255,255,.06)}
-.trust .wrap{display:flex;gap:16px 36px;align-items:center;justify-content:center;flex-wrap:wrap;padding-top:20px;padding-bottom:20px;font-size:.85rem;font-weight:500}
-.trust b{color:rgba(255,255,255,.9);font-weight:700}
-.trust .dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.25)}
-@media(max-width:640px){.trust .dot{display:none}}
+.trust{border-top:1px solid var(--m-hairline);border-bottom:1px solid var(--m-hairline);background:rgba(18,24,34,.5)}
+.trust .wrap{display:flex;gap:14px 34px;align-items:center;justify-content:center;flex-wrap:wrap;padding:18px 24px;font-size:.8125rem;color:var(--m-text-3)}
+.trust b{color:var(--m-text-2);font-weight:600}
 
-/* ---------- sections ---------- */
-section{padding:88px 0}
-.kicker{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
-.sec-title{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:800;margin-bottom:14px;max-width:34rem}
-.sec-sub{color:var(--ink-soft);font-size:1.08rem;max-width:36rem;margin-bottom:48px}
+.ipad-sec{padding:96px 0;border-top:1px solid var(--m-hairline);text-align:center}
+.ipad-sec .frame-ipad{max-width:880px;margin:0 auto}
+.ipad-cap{font-size:.8125rem;color:var(--m-text-3);margin-top:18px}
 
-/* cohort cards */
-.cohorts{background:var(--sandy)}
-.cohort-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.cohort-card{display:flex;flex-direction:column;background:#fff;border-radius:22px;overflow:hidden;text-decoration:none;color:var(--ink);border:1px solid var(--paper-line);box-shadow:0 2px 14px rgba(28,26,46,.05);transition:transform .18s,box-shadow .18s}
-.cohort-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(28,26,46,.13)}
-.cohort-art{height:130px;position:relative}
-.cohort-art svg{position:absolute;inset:0;width:100%;height:100%}
-.cohort-body{padding:24px 26px 28px}
-.cohort-body h3{font-size:1.35rem;font-weight:700;margin-bottom:8px}
-.cohort-body p{color:var(--ink-soft);font-size:.95rem;margin-bottom:16px}
-.cohort-link{font-weight:700;font-size:.92rem;color:var(--teal);display:inline-flex;align-items:center;gap:6px}
-.cohort-card:hover .cohort-link{gap:10px}
-.cohort-link::after{content:'→';transition:inherit}
+.everywhere{padding:96px 0;border-top:1px solid var(--m-hairline)}
+.ew-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.ew-card{background:var(--m-card);border:1px solid var(--m-hairline);border-radius:var(--r-card);padding:28px;display:flex;flex-direction:column;gap:8px}
+.ew-card h3{font-size:1.25rem;font-weight:700}
+.ew-card p{color:var(--m-text-2);font-size:.9375rem;max-width:30rem}
+.ew-card .art{margin-top:20px;display:flex;justify-content:center;align-items:flex-end;flex:1}
+.platforms{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px;justify-content:center}
+@media(max-width:860px){.ew-grid{grid-template-columns:1fr}}
+
+.cohorts{padding:96px 0;border-top:1px solid var(--m-hairline)}
+.cohort-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cohort-card{background:var(--m-card);border:1px solid var(--m-hairline);border-radius:var(--r-card);padding:26px;text-decoration:none;color:var(--m-text);transition:background .16s,border-color .16s,transform .16s ease-out;display:block}
+.cohort-card:hover{background:var(--m-card-2);border-color:rgba(255,255,255,.16);transform:translateY(-3px)}
+.cohort-card .bar{display:block;width:30px;height:3px;border-radius:2px;margin-bottom:16px}
+.cohort-card h3{font-size:1.3rem;font-weight:700;margin-bottom:8px}
+.cohort-card p{color:var(--m-text-2);font-size:.9375rem;margin-bottom:16px}
+.cohort-card .go{font-weight:700;font-size:.875rem;color:var(--m-accent)}
 @media(max-width:860px){.cohort-grid{grid-template-columns:1fr}}
 
-/* features */
-.features{background:#fff;border-top:1px solid var(--paper-line);border-bottom:1px solid var(--paper-line)}
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.feat{background:var(--sandy);border:1px solid var(--paper-line);border-radius:18px;padding:26px}
-.feat .ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;background:var(--navy);color:var(--teal-bright)}
-.feat h3{font-size:1.08rem;font-weight:700;margin-bottom:6px}
-.feat p{color:var(--ink-soft);font-size:.92rem}
-@media(max-width:900px){.feat-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.feat-grid{grid-template-columns:1fr}}
+.story{padding:96px 0}
+.story .inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+.story-art img{border-radius:var(--r-card);box-shadow:0 24px 60px rgba(28,26,46,.22)}
+.story p{color:var(--ink-2);margin-bottom:16px}
+.story p b{color:var(--ink);font-weight:600}
+.story .quote{font-family:var(--f-display);font-size:1.3rem;font-weight:600;color:var(--ink);border-left:3px solid var(--gold);padding-left:18px;margin:24px 0}
+@media(max-width:860px){.story .inner{grid-template-columns:1fr}.story-art{max-width:380px;margin:0 auto}}
 
-/* devices */
-.devices{background:var(--navy);color:#fff}
-.devices .kicker{color:var(--teal-bright)}
-.devices .sec-sub{color:rgba(255,255,255,.65)}
-.device-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
-.device-card{background:var(--navy-soft);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:28px;display:flex;flex-direction:column}
-.device-card h3{font-size:1.15rem;margin-bottom:8px}
-.device-card p{color:rgba(255,255,255,.62);font-size:.92rem;margin-bottom:20px}
-.device-card .art{margin-top:auto;display:flex;justify-content:center}
-.watch-frame{width:170px;border-radius:38px;padding:8px;background:#000;border:1px solid rgba(255,255,255,.18);box-shadow:0 16px 40px rgba(0,0,0,.5)}
-.watch-frame img{border-radius:30px}
-.mini-phone{width:170px;border-radius:28px;padding:7px;background:#0b0a12;border:1px solid rgba(255,255,255,.16);box-shadow:0 16px 40px rgba(0,0,0,.5)}
-.mini-phone img{border-radius:22px}
-.platform-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px;justify-content:center}
-.platform{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:.5rem 1.1rem;font-size:.85rem;font-weight:600;color:rgba(255,255,255,.85)}
-@media(max-width:860px){.device-row{grid-template-columns:1fr}}
-
-/* story */
-.story .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
-.story-art img{border-radius:24px;box-shadow:0 24px 60px rgba(28,26,46,.22)}
-.story p{color:var(--ink-soft);margin-bottom:16px;font-size:1.02rem}
-.story p b{color:var(--ink)}
-.story .quote{font-family:var(--display);font-size:1.3rem;font-weight:600;color:var(--ink);border-left:3px solid var(--gold);padding-left:18px;margin:26px 0}
-@media(max-width:860px){.story .wrap{grid-template-columns:1fr}.story-art{max-width:380px;margin:0 auto}}
-
-/* pricing */
-.pricing{background:#fff;border-top:1px solid var(--paper-line)}
-.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:780px;margin:0 auto}
-.price-card{border-radius:24px;padding:36px 32px}
+.pricing{padding:96px 0;background:#fff;color:var(--ink);border-top:1px solid var(--paper-line)}
+.pricing .kicker{color:var(--teal-text)}
+.pricing .sec-sub{color:var(--ink-2)}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:780px;margin:0 auto}
+.price-card{border-radius:24px;padding:34px 30px}
 .price-card.free{background:var(--sandy);border:1.5px solid var(--paper-line)}
-.price-card.pro{background:linear-gradient(150deg,var(--navy-deep),var(--navy) 60%,#0E2E33);color:#fff;position:relative;overflow:hidden}
-.price-card.pro::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,var(--teal-glow),transparent 70%)}
-.price-card h3{font-size:1.25rem;margin-bottom:4px}
-.price-big{font-family:var(--display);font-size:2.7rem;font-weight:800;margin:14px 0 2px}
-.price-big small{font-size:1rem;font-weight:600;opacity:.6}
-.price-alt{font-size:.88rem;opacity:.65;margin-bottom:22px}
-.price-card ul{list-style:none;margin-bottom:26px}
-.price-card li{padding:.42rem 0;font-size:.95rem;display:flex;gap:10px;align-items:baseline}
-.price-card li::before{content:'✓';font-weight:800;color:var(--teal)}
-.price-card.pro li::before{color:var(--teal-bright)}
-.price-card li.na{opacity:.45}
-.price-card li.na::before{content:'—';color:inherit}
-.tag{display:inline-block;background:var(--gold);color:var(--navy-deep);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:100px;padding:.28rem .75rem;margin-bottom:12px}
-.btn-pro{display:block;text-align:center;background:var(--teal-bright);color:var(--navy-deep);text-decoration:none;font-weight:800;padding:.9rem;border-radius:14px;transition:background .15s}
-.btn-pro:hover{background:#4bd8cb}
-.btn-free{display:block;text-align:center;border:1.5px solid var(--navy);color:var(--navy);text-decoration:none;font-weight:700;padding:.9rem;border-radius:14px;transition:background .15s}
-.btn-free:hover{background:rgba(28,26,46,.05)}
-.price-note{text-align:center;color:var(--ink-soft);font-size:.86rem;margin-top:28px}
+.price-card.pro{background:linear-gradient(160deg,#0A0E14,#121A28 65%,#0E2E33);color:var(--m-text);border:1px solid rgba(61,210,232,.25)}
+.price-card h3{font-size:1.2rem;margin-bottom:2px}
+.price-big{font-family:var(--f-round);font-variant-numeric:tabular-nums;font-size:2.7rem;font-weight:600;margin:12px 0 2px}
+.price-big small{font-size:1rem;font-weight:500;opacity:.6}
+.price-alt{font-size:.875rem;opacity:.65;margin-bottom:20px}
+.price-card ul{list-style:none;margin-bottom:24px}
+.price-card li{padding:6px 0;font-size:.9375rem;display:flex;gap:10px;align-items:baseline}
+.price-card li::before{content:'✓';font-weight:800;color:var(--teal-text)}
+.price-card.pro li::before{color:var(--m-accent)}
+.tag{display:inline-block;background:var(--gold);color:var(--deep-navy);font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:100px;padding:5px 12px;margin-bottom:12px}
+.btn-pro{display:block;text-align:center;background:var(--ocean-teal);color:var(--deep-navy);text-decoration:none;font-weight:800;padding:15px;border-radius:14px;transition:transform .16s ease-out}
+.btn-pro:hover{transform:translateY(-2px)}
+.btn-free{display:block;text-align:center;border:1.5px solid var(--navy);color:var(--navy);text-decoration:none;font-weight:700;padding:15px;border-radius:14px}
+.price-note{text-align:center;color:var(--ink-2);font-size:.8125rem;margin-top:26px}
 @media(max-width:720px){.price-grid{grid-template-columns:1fr}}
 
-/* final cta */
-.final{background:linear-gradient(178deg,var(--navy) 0%,var(--navy-deep) 100%);color:#fff;text-align:center;position:relative;overflow:hidden}
-.final h2{font-size:clamp(2rem,4.5vw,3.1rem);font-weight:800;margin-bottom:14px}
-.final p{color:rgba(255,255,255,.65);font-size:1.1rem;margin-bottom:34px}
-.final .wave{position:absolute;left:0;right:0;bottom:0;opacity:.5}
-.final .wrap{position:relative}
-
-footer{background:var(--navy-deep);color:rgba(255,255,255,.5);padding:44px 0 54px;font-size:.85rem;border-top:1px solid rgba(255,255,255,.07)}
-footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-footer a{color:rgba(255,255,255,.75);text-decoration:none}
-footer a:hover{color:var(--teal-bright)}
-.foot-links{display:flex;gap:22px;flex-wrap:wrap}
-.disclaimer{width:100%;margin-top:18px;font-size:.78rem;color:rgba(255,255,255,.35)}
-
-/* reveal animation */
-.js .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
-.js .rv.on{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}}
-@keyframes pulse{0%,100%{opacity:1;r:6}50%{opacity:.55;r:8}}
-.now-dot{animation:pulse 2.4s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){.now-dot{animation:none}}
+.final{padding:110px 0;text-align:center;background:
+  radial-gradient(700px 380px at 50% 0%, rgba(61,210,232,.10), transparent 65%), var(--m-base)}
+.final h2{font-size:clamp(2rem,4.4vw,3rem);font-weight:800;margin-bottom:14px}
+.final p{color:var(--m-text-2);font-size:1.0625rem;margin-bottom:34px}
 </style>
 </head>
 <body>
 <script>document.body.classList.add("js")</script>
 
-<nav>
+<nav class="site">
   <div class="wrap">
     <a class="brand" href="/">
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M2 17c3-6 6-6 9 0s6 6 9 0" stroke="#2EC4B6" stroke-width="2.6" stroke-linecap="round"/><path d="M5 9l3-5 2.5 4M21 9l-3-5-2.5 4" stroke="#2EC4B6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M2 17c3-6 6-6 9 0s6 6 9 0" stroke="#3DD2E8" stroke-width="2.6" stroke-linecap="round"/><path d="M5 9l3-5 2.5 4M21 9l-3-5-2.5 4" stroke="#3DD2E8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       RipCat
     </a>
     <div class="nav-links">
-      <a href="#features">Features</a>
+      <a href="#oracle">Features</a>
       <a href="pro.html">Who it's for</a>
       <a href="blog/">Blog</a>
       <a href="#pricing">Pricing</a>
@@ -208,175 +123,203 @@ footer a:hover{color:var(--teal-bright)}
 
 <header class="hero">
   <div class="wrap">
-    <div>
-      <span class="hero-kicker">Tides · Buoys · Marine Advisories</span>
-      <h1>Know the tide <em>before you go.</em></h1>
-      <p class="hero-sub">NOAA tide predictions, live buoy conditions, and marine advisories for thousands of U.S. stations — readable in one glance, on every Apple device you own.</p>
-      <div class="cta-row">
-        <a class="btn-store" href="https://apps.apple.com/us/app/ripcat-tide-predictions/id6760085664">
-          <span class="apple">&#63743;</span>
-          <span><small>Download on the</small><b>App Store</b></span>
-        </a>
-        <a class="btn-ghost" href="pro.html">Built for your water →</a>
+    <div class="inner">
+      <div>
+        <p class="kicker">Tides · Buoys · Marine advisories</p>
+        <h1>A weather oracle <em>in your pocket.</em></h1>
+        <p class="hero-sub">Every tide, every buoy, every Small Craft Advisory on the U.S. coast — read at a glance, from the same NOAA data the professionals use. Open it, read it, go.</p>
+        <div class="cta-row">
+          <a class="btn-store" href="https://apps.apple.com/us/app/ripcat-tide-predictions/id6760085664">
+            <span class="apple">&#63743;</span>
+            <span><small>Download on the</small><b>App Store</b></span>
+          </a>
+          <a class="btn btn-ghost" href="pro.html">Built for your water →</a>
+        </div>
+        <p class="hero-note">Free to use. No account. No tracking. No ads.</p>
       </div>
-      <p class="hero-note">Free to use. No account. No tracking. No ads.</p>
-    </div>
-    <div class="hero-phone">
-      <div class="phone"><img src="i/iphone-TideChart_Today.png" alt="RipCat iPhone app showing today's tide at Rincon Point — current height 0.85 ft and falling, next high tide countdown" width="552" height="1200" loading="eager"></div>
+      <div class="hero-media">
+        <div class="frame-iphone"><img src="i/app-iPhone-17-Pro-today.png" alt="RipCat Today screen in dark mode: current tide 2.07 ft and falling, next low in 1h 58m, Solar Tide Dial for San Francisco (Golden Gate)" loading="eager"></div>
+      </div>
     </div>
 
-    <div class="hero-chart" aria-hidden="true">
-      <svg viewBox="0 0 1200 310" fill="none">
-        <defs>
-          <linearGradient id="hfill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#2EC4B6" stop-opacity=".28"/>
-            <stop offset="1" stop-color="#2EC4B6" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <path d="M0.0,115.2 L12.5,103.1 L25.0,91.5 L37.5,80.7 L50.0,70.8 L62.5,62.0 L75.0,54.3 L87.5,47.9 L100.0,42.8 L112.5,39.1 L125.0,36.8 L137.5,36.0 L150.0,36.6 L162.5,38.7 L175.0,42.1 L187.5,46.8 L200.0,52.8 L212.5,59.8 L225.0,67.8 L237.5,76.7 L250.0,86.3 L262.5,96.4 L275.0,106.9 L287.5,117.7 L300.0,128.4 L312.5,139.1 L325.0,149.4 L337.5,159.3 L350.0,168.6 L362.5,177.1 L375.0,184.8 L387.5,191.5 L400.0,197.1 L412.5,201.6 L425.0,204.9 L437.5,206.9 L450.0,207.7 L462.5,207.3 L475.0,205.7 L487.5,202.9 L500.0,199.0 L512.5,194.0 L525.0,188.2 L537.5,181.6 L550.0,174.4 L562.5,166.7 L575.0,158.6 L587.5,150.3 L600.0,141.9 L612.5,133.7 L625.0,125.8 L637.5,118.3 L650.0,111.4 L662.5,105.2 L675.0,99.9 L687.5,95.5 L700.0,92.2 L712.5,90.0 L725.0,89.0 L737.5,89.3 L750.0,90.8 L762.5,93.5 L775.0,97.5 L787.5,102.7 L800.0,109.0 L812.5,116.3 L825.0,124.5 L837.5,133.6 L850.0,143.3 L862.5,153.6 L875.0,164.2 L887.5,175.1 L900.0,186.0 L912.5,196.8 L925.0,207.3 L937.5,217.3 L950.0,226.8 L962.5,235.4 L975.0,243.1 L987.5,249.8 L1000.0,255.3 L1012.5,259.5 L1025.0,262.4 L1037.5,263.9 L1050.0,264.0 L1062.5,262.6 L1075.0,259.8 L1087.5,255.5 L1100.0,249.8 L1112.5,242.9 L1125.0,234.7 L1137.5,225.4 L1150.0,215.1 L1162.5,204.0 L1175.0,192.2 L1187.5,179.8 L1200.0,167.1 L1200,300 L0,300 Z" fill="url(#hfill)"/>
-        <path d="M0.0,115.2 L12.5,103.1 L25.0,91.5 L37.5,80.7 L50.0,70.8 L62.5,62.0 L75.0,54.3 L87.5,47.9 L100.0,42.8 L112.5,39.1 L125.0,36.8 L137.5,36.0 L150.0,36.6 L162.5,38.7 L175.0,42.1 L187.5,46.8 L200.0,52.8 L212.5,59.8 L225.0,67.8 L237.5,76.7 L250.0,86.3 L262.5,96.4 L275.0,106.9 L287.5,117.7 L300.0,128.4 L312.5,139.1 L325.0,149.4 L337.5,159.3 L350.0,168.6 L362.5,177.1 L375.0,184.8 L387.5,191.5 L400.0,197.1 L412.5,201.6 L425.0,204.9 L437.5,206.9 L450.0,207.7 L462.5,207.3 L475.0,205.7 L487.5,202.9 L500.0,199.0 L512.5,194.0 L525.0,188.2 L537.5,181.6 L550.0,174.4 L562.5,166.7 L575.0,158.6 L587.5,150.3 L600.0,141.9 L612.5,133.7 L625.0,125.8 L637.5,118.3 L650.0,111.4 L662.5,105.2 L675.0,99.9 L687.5,95.5 L700.0,92.2 L712.5,90.0 L725.0,89.0 L737.5,89.3 L750.0,90.8 L762.5,93.5 L775.0,97.5 L787.5,102.7 L800.0,109.0 L812.5,116.3 L825.0,124.5 L837.5,133.6 L850.0,143.3 L862.5,153.6 L875.0,164.2 L887.5,175.1 L900.0,186.0 L912.5,196.8 L925.0,207.3 L937.5,217.3 L950.0,226.8 L962.5,235.4 L975.0,243.1 L987.5,249.8 L1000.0,255.3 L1012.5,259.5 L1025.0,262.4 L1037.5,263.9 L1050.0,264.0 L1062.5,262.6 L1075.0,259.8 L1087.5,255.5 L1100.0,249.8 L1112.5,242.9 L1125.0,234.7 L1137.5,225.4 L1150.0,215.1 L1162.5,204.0 L1175.0,192.2 L1187.5,179.8 L1200.0,167.1" stroke="#2EC4B6" stroke-width="3" stroke-linecap="round" style="filter:drop-shadow(0 0 10px rgba(46,196,182,.55))"/>
-        <!-- high/low markers -->
-        <circle cx="137.5" cy="36" r="6" fill="#E65A40"/>
-        <text x="137.5" y="18" fill="#E65A40" font-size="15" font-weight="700" text-anchor="middle" font-family="Inter,sans-serif">H 5.5 ft · 4:12a</text>
-        <circle cx="450" cy="207.7" r="6" fill="#33CC73"/>
-        <text x="450" y="238" fill="#33CC73" font-size="15" font-weight="700" text-anchor="middle" font-family="Inter,sans-serif">L 0.3 ft · 10:38a</text>
-        <circle cx="725" cy="89" r="6" fill="#E65A40"/>
-        <text x="725" y="71" fill="#E65A40" font-size="15" font-weight="700" text-anchor="middle" font-family="Inter,sans-serif">H 4.8 ft · 5:03p</text>
-        <circle cx="1050" cy="264" r="6" fill="#33CC73"/>
-        <text x="1050" y="294" fill="#33CC73" font-size="15" font-weight="700" text-anchor="middle" font-family="Inter,sans-serif">L 1.6 ft · 11:21p</text>
-        <!-- now marker -->
-        <line x1="330" y1="30" x2="330" y2="290" stroke="rgba(255,255,255,.25)" stroke-width="1.5" stroke-dasharray="4 6"/>
-        <circle class="now-dot" cx="330" cy="151.5" r="6" fill="#fff"/>
-        <text x="342" y="146" fill="#fff" font-size="15" font-weight="700" font-family="Inter,sans-serif">Now · 2.6 ft, falling</text>
-      </svg>
+    <div class="hero-metrics rv">
+      <div class="metric-row" aria-label="Example of RipCat's at-a-glance data">
+        <div class="metric">
+          <div class="lbl">Current tide</div>
+          <div class="val">2.07 <span class="unit">ft</span></div>
+          <div class="sub"><span class="down">↓ Falling</span> · San Francisco</div>
+        </div>
+        <div class="metric">
+          <div class="lbl">Next low</div>
+          <div class="val">10:51 <span class="unit">AM</span></div>
+          <div class="sub">1.33 ft · in 1h 58m</div>
+        </div>
+        <div class="metric">
+          <div class="lbl">Water temp</div>
+          <div class="val">61 <span class="unit">°F</span></div>
+          <div class="sub">Buoy 46053 · East Santa Barbara</div>
+        </div>
+        <div class="metric">
+          <div class="lbl">Advisory</div>
+          <div class="val" style="font-size:1.15rem;padding-top:6px"><span class="chip chip-coral">SCA until 2 PM</span></div>
+          <div class="sub">PZZ650 · seas 4–6 ft</div>
+        </div>
+      </div>
+      <p class="metrics-cap">Real readings from the screens on this page — captured live from the app.</p>
     </div>
   </div>
 </header>
 
 <div class="trust">
   <div class="wrap">
-    <span><b>NOAA</b> tide predictions</span><span class="dot"></span>
-    <span><b>NWS</b> marine advisories</span><span class="dot"></span>
-    <span><b>NDBC</b> live buoys</span><span class="dot"></span>
+    <span><b>NOAA</b> tide predictions</span>
+    <span><b>NWS</b> marine advisories</span>
+    <span><b>NDBC</b> live buoys</span>
     <span>The same public sources marine professionals use</span>
   </div>
 </div>
 
-<section class="cohorts" id="who">
-  <div class="wrap">
-    <p class="kicker rv">Built for your water</p>
-    <h2 class="sec-title rv">The ocean runs on its own clock. Your app should keep up.</h2>
-    <p class="sec-sub rv">One tide, three tribes. RipCat speaks all of them.</p>
-    <div class="cohort-grid">
-      <a class="cohort-card rv" href="pro.html#surf">
-        <div class="cohort-art" style="background:linear-gradient(160deg,#1C1A2E 20%,#5A3A55 65%,#E65A40)">
-          <svg viewBox="0 0 320 130" preserveAspectRatio="none" aria-hidden="true"><path d="M0,80 C40,60 70,100 110,88 C160,73 190,40 240,55 C280,66 300,50 320,58 L320,130 L0,130 Z" fill="rgba(46,196,182,.4)"/><circle cx="250" cy="34" r="14" fill="#F2C040" opacity=".9"/></svg>
-        </div>
-        <div class="cohort-body">
-          <h3>Surfers</h3>
-          <p>Know your tide before the set shows up. The window, the push, first light — on your wrist in the lineup.</p>
-          <span class="cohort-link">Dawn patrol starts here</span>
-        </div>
-      </a>
-      <a class="cohort-card rv" href="pro.html#fish">
-        <div class="cohort-art" style="background:linear-gradient(160deg,#0D0C14 30%,#14232E 70%,#1E3A34)">
-          <svg viewBox="0 0 320 130" preserveAspectRatio="none" aria-hidden="true"><path d="M0,95 C50,70 90,105 140,80 C190,55 230,90 280,65 C295,58 310,60 320,62 L320,130 L0,130 Z" fill="rgba(51,204,115,.35)"/><circle cx="272" cy="30" r="12" fill="#FAF5EB" opacity=".85"/><circle cx="266" cy="26" r="10" fill="#14232E"/></svg>
-        </div>
-        <div class="cohort-body">
-          <h3>Anglers</h3>
-          <p>Fish the moving water. Tide swing, water temp on every buoy pin, and a dark mode built for the night bite.</p>
-          <span class="cohort-link">Find the bite window</span>
-        </div>
-      </a>
-      <a class="cohort-card rv" href="pro.html#boat">
-        <div class="cohort-art" style="background:linear-gradient(160deg,#14121F 25%,#1B2C4A 75%,#0E4B5A)">
-          <svg viewBox="0 0 320 130" preserveAspectRatio="none" aria-hidden="true"><path d="M0,88 C60,72 100,96 160,84 C220,72 260,92 320,78 L320,130 L0,130 Z" fill="rgba(46,196,182,.32)"/><rect x="36" y="30" width="58" height="14" rx="7" fill="#F2C040" opacity=".9"/><rect x="104" y="30" width="34" height="14" rx="7" fill="#E65A40" opacity=".9"/><rect x="148" y="30" width="80" height="14" rx="7" fill="rgba(255,255,255,.28)"/></svg>
-        </div>
-        <div class="cohort-body">
-          <h3>Boaters</h3>
-          <p>Tide, wind, and Small Craft Advisories on one screen — checked before you leave the dock, cached past the breakwater.</p>
-          <span class="cohort-link">Read the harbor first</span>
-        </div>
-      </a>
+<section class="feature" id="oracle">
+  <div class="wrap inner">
+    <div>
+      <p class="kicker rv">Marine timeline</p>
+      <h2 class="rv">The week's weather, on one map.</h2>
+      <p class="rv">Small Craft Advisories aren't a wall of text in RipCat — they're a <b>timeline you can scrub</b>. Drag through the forecast and watch advisories sweep across the coast, zone by zone, from this morning to the weekend.</p>
+      <ul class="f-points">
+        <li class="rv"><b>Zones painted on the chart</b> — advisory areas glow where and when they're in effect.</li>
+        <li class="rv"><b>Press play</b> and let the week run like a weather-desk loop.</li>
+        <li class="rv"><b>Buoy chips live on the same map</b> — water temp and seas next to every zone.</li>
+      </ul>
+    </div>
+    <div class="f-media rv">
+      <div class="frame-iphone"><img src="i/app-iPhone-17-Pro-map-sca-timeline.png" alt="RipCat marine map with the Small Craft Advisory timeline scrubbed to Tomorrow AM, buoy water-temp chips and zone labels across the Santa Barbara Channel" loading="lazy"></div>
     </div>
   </div>
 </section>
 
-<section class="features" id="features">
-  <div class="wrap">
-    <p class="kicker rv">What's in the app</p>
-    <h2 class="sec-title rv">Everything the water is doing, in one glance.</h2>
-    <p class="sec-sub rv">No accounts, no feeds, no ads between you and the data. Open it, read it, go.</p>
-    <div class="feat-grid">
-      <div class="feat rv">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 15c3-7 6-7 9 0s6 7 9 0"/><path d="M12 4v3M12 4l-2 2M12 4l2 2"/></svg></div>
-        <h3>Scrubbable 48-hour tide curve</h3>
-        <p>Drag your finger through the next two days. Exact height at any minute, highs and lows marked, countdown to the next turn.</p>
-      </div>
-      <div class="feat rv">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 12l4-3"/></svg></div>
-        <h3>The Tide Dial</h3>
-        <p>A full day on one dial — daylight bands, highs, lows, and where you are in the cycle right now. Spin it to plan.</p>
-      </div>
-      <div class="feat rv">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 1 8 8c0 5.4-8 12-8 12S4 15.4 4 10a8 8 0 0 1 8-8Z"/></svg></div>
-        <h3>Live buoy pins</h3>
-        <p>Tap any NDBC buoy on the map: water temperature with a 7-day trend, swell direction, height and period, wind, and pressure.</p>
-      </div>
-      <div class="feat rv">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l9 16H3l9-16Z"/><path d="M12 10v4M12 17.5v.5"/></svg></div>
-        <h3>Marine advisories</h3>
-        <p>NWS Small Craft Advisories by zone, on a day-by-day timeline. Severity coded by shape and color, labeled for VoiceOver.</p>
-      </div>
-      <div class="feat rv">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg></div>
-        <h3>Sun & moon</h3>
-        <p>First light, sunrise, sunset, last light. Moonrise and moonset with compass bearings, moon phase, and solunar context.</p>
-      </div>
-      <div class="feat rv">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h7"/><path d="M18 15l3 3-3 3"/></svg></div>
-        <h3>Works offline</h3>
-        <p>Tide and buoy data are cached, so the app still answers when the cell signal quits at the beach, the bar, or the breakwater.</p>
-      </div>
+<section class="feature flip">
+  <div class="wrap inner">
+    <div>
+      <p class="kicker rv">Buoy detail</p>
+      <h2 class="rv">Every buoy is a weather station. Now it reports to you.</h2>
+      <p class="rv">Tap buoy 46053 off Santa Barbara and get the full briefing: <b>swell height, direction, and period on a compass rose</b>, wind and gusts, pressure and its trend, water, air, and dew point — plus the last twelve hours of wave history to see where it's headed.</p>
+      <ul class="f-points">
+        <li class="rv"><b>Water temperature with a 7-day trend</b> — know if it's been building before you drive.</li>
+        <li class="rv"><b>Primary swell vs wind waves</b>, separated, with period bars.</li>
+        <li class="rv"><b>Rearrange the sections</b> so your number is always on top.</li>
+      </ul>
+    </div>
+    <div class="f-media rv">
+      <div class="frame-iphone"><img src="i/app-iPhone-17-Pro-buoy-detail.png" alt="RipCat buoy detail for NOAA buoy 46053: 3.3 ft swell hero numeral, swell rose, wind 4 kt gusting 6, 1015 mb, 61°F water, 12-hour wave history" loading="lazy"></div>
     </div>
   </div>
 </section>
 
-<section class="devices">
+<section class="feature">
+  <div class="wrap inner">
+    <div>
+      <p class="kicker rv">At a glance</p>
+      <h2 class="rv">Advisories that read themselves.</h2>
+      <p class="rv">Tap a zone chip and the oracle speaks plainly: <b>what's in effect, until when, and what the water is doing</b> — winds, seas, and wave detail in the National Weather Service's own words, without leaving the map.</p>
+      <ul class="f-points">
+        <li class="rv"><b>Severity you can see</b> — coded by shape and color, labeled for VoiceOver.</li>
+        <li class="rv"><b>One tap to the full advisory</b> when you want every word.</li>
+        <li class="rv"><b>Cached offline</b> — the last briefing stays with you past the breakwater.</li>
+      </ul>
+    </div>
+    <div class="f-media rv">
+      <div class="frame-iphone"><img src="i/app-iPhone-17-Pro-zone-glance.png" alt="RipCat zone summary for PZZ650, East Santa Barbara Channel: Small Craft Advisory in effect until 2 PM, NW wind 10 to 15 kt becoming W 20 to 30 kt, seas 4 to 6 ft" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="feature flip">
+  <div class="wrap inner">
+    <div>
+      <p class="kicker rv">Make it yours</p>
+      <h2 class="rv">Your units, your theme, your month on one page.</h2>
+      <p class="rv">Feet or meters, 12 or 24-hour time, four chart themes from light to full nautical. And when you'd rather trust paper, <b>print a tide calendar</b> — a whole month of curves, highs, lows, and sun times, ink-friendly, for the fridge, the nav desk, or the tackle box.</p>
+      <ul class="f-points">
+        <li class="rv"><b>Chart themes:</b> Light, Dark, Coastal, Nautical.</li>
+        <li class="rv"><b>High-tide alerts</b> and a refresh cadence you control.</li>
+        <li class="rv"><b>Tide calendars</b> with sunrise, sunset, and every turn of the water.</li>
+      </ul>
+    </div>
+    <div class="f-media rv">
+      <div class="frame-iphone sm" style="margin-right:-40px;z-index:1"><img src="i/app-iPhone-17-Pro-settings.png" alt="RipCat settings in dark mode: RipCat Pro active, tide height units, 24-hour time, chart theme picker" loading="lazy"></div>
+      <div class="frame-iphone sm" style="margin-top:56px"><img src="i/app-iPhone-17-Pro-calendars.png" alt="RipCat tide calendar for Santa Barbara, July 2026: a mini tide curve and high/low times for every day, with sunrise and sunset" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="ipad-sec">
+  <div class="wrap">
+    <p class="kicker rv">On iPad</p>
+    <h2 class="sec-title rv" style="margin-left:auto;margin-right:auto;text-align:center">The nav-desk view.</h2>
+    <p class="sec-sub rv" style="margin-left:auto;margin-right:auto;text-align:center">Full-width charts, the sidebar always at hand, and the whole Channel on one screen.</p>
+    <div class="frame-ipad rv"><img src="i/app-iPad-Pro-13-inch-M5-map-sca-timeline.png" alt="RipCat on iPad Pro: split-view with sidebar and the marine map showing buoy temperatures and advisory zones across the Santa Barbara Channel" loading="lazy"></div>
+    <p class="ipad-cap rv">iPad Pro 13″ — Map with the marine timeline, captured from the app.</p>
+  </div>
+</section>
+
+<section class="everywhere">
   <div class="wrap">
     <p class="kicker rv">Everywhere you look</p>
     <h2 class="sec-title rv">A glance is only a glance if it's already there.</h2>
-    <p class="sec-sub rv">RipCat puts the tide on whatever surface you look at first — wrist, Lock Screen, menu bar, or Dynamic Island.</p>
-    <div class="device-row">
-      <div class="device-card rv">
+    <p class="sec-sub rv">The oracle whispers from every surface you own — wrist, Lock Screen, Dynamic Island, menu bar.</p>
+    <div class="ew-grid">
+      <div class="ew-card rv">
         <h3>Apple Watch</h3>
-        <p>A standalone watch app plus complications for circular, rectangular, corner, and inline slots. The tide lives next to the time.</p>
-        <div class="art"><div class="watch-frame"><img src="i/watch-complications.png" alt="RipCat on Apple Watch showing Rincon Point tide sparkline and rip current risk" loading="lazy"></div></div>
+        <p>A standalone watch app with the tide curve and current height, plus complications for every slot. In the lineup, the answer is on your wrist.</p>
+        <div class="art"><div class="frame-watch"><img src="i/app-Apple-Watch-Series-11-46mm-watch-main.png" alt="RipCat on Apple Watch: Rincon Point tide sparkline, 2.4 ft and falling" loading="lazy"></div></div>
       </div>
-      <div class="device-card rv">
-        <h3>Widgets & Live Activities</h3>
-        <p>Home Screen and Lock Screen widgets in every size, Dynamic Island support, and Siri Shortcuts. The next high tide finds you.</p>
-        <div class="art"><div class="mini-phone"><img src="i/iphone-FavoritesList.png" alt="RipCat favorites list showing five California stations with current tide and next-high countdowns" loading="lazy"></div></div>
-      </div>
-      <div class="device-card rv">
-        <h3>Mac, iPad & Vision Pro</h3>
-        <p>A menu bar app on the Mac, split-view navigation on iPad, spatial tides on Vision Pro — and a free open-source CLI for the terminal crowd.</p>
-        <div class="art"><div class="mini-phone"><img src="i/iphone-StationMap.png" alt="RipCat station map of the California coast with NOAA tide station pins" loading="lazy"></div></div>
+      <div class="ew-card rv">
+        <h3>Widgets, Live Activities & favorites</h3>
+        <p>Home Screen and Lock Screen widgets, Dynamic Island countdowns to the next turn, Siri Shortcuts — and every spot you care about, one swipe apart.</p>
+        <div class="art"><div class="frame-iphone sm"><img src="i/app-iPhone-17-Pro-favorites.png" alt="RipCat favorites in dark mode: five California stations with current height and time to the next high or low" loading="lazy"></div></div>
       </div>
     </div>
-    <div class="platform-list rv">
-      <span class="platform">iPhone · iOS 17+</span>
-      <span class="platform">Apple Watch · watchOS 10+</span>
-      <span class="platform">iPad</span>
-      <span class="platform">Mac · macOS 14+</span>
-      <span class="platform">Vision Pro</span>
-      <span class="platform">Open-source CLI</span>
+    <div class="platforms">
+      <span class="chip chip-quiet">iPhone · iOS 17+</span>
+      <span class="chip chip-quiet">iPad</span>
+      <span class="chip chip-quiet">Apple Watch · watchOS 10+</span>
+      <span class="chip chip-quiet">Mac menu bar · macOS 14+</span>
+      <span class="chip chip-quiet">Vision Pro</span>
+      <span class="chip chip-quiet">Open-source CLI</span>
     </div>
   </div>
 </section>
 
-<section class="story" id="story">
+<section class="cohorts" id="who">
   <div class="wrap">
+    <p class="kicker rv">Built for your water</p>
+    <h2 class="sec-title rv">One ocean, three tribes. RipCat speaks all of them.</h2>
+    <p class="sec-sub rv">The deep dive on what Pro does for the way you use the water:</p>
+    <div class="cohort-grid">
+      <a class="cohort-card rv" href="pro.html#surf">
+        <span class="bar" style="background:var(--gold)"></span>
+        <h3>Surfers</h3>
+        <p>Know your tide before the set shows up. The window, the push, first light — on your wrist in the lineup.</p>
+        <span class="go">Dawn patrol starts here →</span>
+      </a>
+      <a class="cohort-card rv" href="pro.html#fish">
+        <span class="bar" style="background:var(--sea-green)"></span>
+        <h3>Anglers</h3>
+        <p>Fish the moving water. The swing, water temp on every buoy, and a dark UI built for the night bite.</p>
+        <span class="go">Find the bite window →</span>
+      </a>
+      <a class="cohort-card rv" href="pro.html#boat">
+        <span class="bar" style="background:var(--m-accent)"></span>
+        <h3>Boaters</h3>
+        <p>Tide, wind, and Small Craft Advisories on one screen — checked before the dock lines come off.</p>
+        <span class="go">Read the harbor first →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="story light" id="story">
+  <div class="wrap inner">
     <div class="story-art rv"><img src="i/rip-mascot.jpg" alt="Rip, a grey tabby cat in a navy Santa Barbara Surf Shop hoodie, standing next to a Randy Cone surfboard on the beach" loading="lazy"></div>
     <div>
       <p class="kicker rv">The story</p>
@@ -391,9 +334,11 @@ footer a:hover{color:var(--teal-bright)}
 
 <section class="pricing" id="pricing">
   <div class="wrap">
-    <p class="kicker rv" style="text-align:center">Pricing</p>
-    <h2 class="sec-title rv" style="text-align:center;margin-left:auto;margin-right:auto">Honest, like a tide table.</h2>
-    <p class="sec-sub rv" style="text-align:center;margin-left:auto;margin-right:auto">The data is free. Pro puts it everywhere you glance.</p>
+    <div class="center">
+      <p class="kicker rv">Pricing</p>
+      <h2 class="sec-title rv">Honest, like a tide table.</h2>
+      <p class="sec-sub rv">The data is free. Pro puts it everywhere you glance.</p>
+    </div>
     <div class="price-grid">
       <div class="price-card free rv">
         <h3>RipCat</h3>
@@ -430,8 +375,8 @@ footer a:hover{color:var(--teal-bright)}
 
 <section class="final">
   <div class="wrap">
-    <h2 class="rv">The tide isn't going to wait.</h2>
-    <p class="rv">Know it before you go. Free on the App Store.</p>
+    <h2 class="rv">All the data you need. In your pocket.</h2>
+    <p class="rv">The tide isn't going to wait. Free on the App Store.</p>
     <div class="cta-row rv" style="justify-content:center">
       <a class="btn-store" href="https://apps.apple.com/us/app/ripcat-tide-predictions/id6760085664">
         <span class="apple">&#63743;</span>
@@ -439,10 +384,9 @@ footer a:hover{color:var(--teal-bright)}
       </a>
     </div>
   </div>
-  <svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true" style="height:70px;width:100%"><path d="M0,40 C240,70 480,10 720,40 C960,70 1200,10 1440,40 L1440,70 L0,70 Z" fill="rgba(46,196,182,.12)"/></svg>
 </section>
 
-<footer>
+<footer class="site">
   <div class="wrap">
     <div>© 2026 RipCat · Made in Santa Barbara. See you out there — keep it fishy.</div>
     <div class="foot-links">
@@ -452,7 +396,7 @@ footer a:hover{color:var(--teal-bright)}
       <a href="mailto:hello@ripcat.dev">hello@ripcat.dev</a>
       <a href="https://apps.apple.com/us/app/ripcat-tide-predictions/id6760085664">App Store</a>
     </div>
-    <p class="disclaimer">RipCat shows official NOAA, NWS, and NDBC data for U.S. coastal stations. Predictions are predictions, not guarantees — and never navigation advice. Check official sources and use good judgment on the water.</p>
+    <p class="disclaimer">Screens on this page are real captures from the shipping app. RipCat shows official NOAA, NWS, and NDBC data for U.S. coastal stations. Predictions are predictions, not guarantees — and never navigation advice.</p>
   </div>
 </footer>
 
