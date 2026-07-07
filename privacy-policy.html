@@ -1,71 +1,125 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — RipCat</title>
-  <meta name="description" content="RipCat Privacy Policy - How we collect, use, and protect your data." />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Privacy Policy — RipCat" />
-  <meta property="og:description" content="RipCat Privacy Policy - How we collect, use, and protect your data." />
-  <meta property="og:url" content="https://ripcat.dev/privacy-policy.html" />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root{--navy:#0e1f33;--teal:#118a8a;--sand:#f8f4ea;--ink:#132238;--muted:#5a6c82;--card:#fff;--line:#e5edf4;--gold:#f3c047}
-    *{box-sizing:border-box} 
-    body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--ink);background:linear-gradient(180deg,#f5fbfb,#f7f3ea);line-height:1.6}
-    .wrap{max-width:800px;margin:0 auto;padding:0 20px}
-    .nav{padding:20px 0;border-bottom:1px solid var(--line)}.brand{font-weight:900;color:var(--navy);text-decoration:none}
-    .content{padding:40px 0}
-    h1{font-size:2.5rem;line-height:1.2;margin:0 0 20px;color:var(--navy)}
-    h2{font-size:1.5rem;margin:40px 0 16px;color:var(--navy);border-bottom:2px solid var(--line);padding-bottom:8px}
-    h3{font-size:1.2rem;margin:24px 0 12px;color:var(--ink)}
-    p{margin:0 0 16px;color:var(--ink)}
-    .updated{background:var(--sand);padding:16px;border-radius:12px;margin:24px 0;border-left:4px solid var(--teal)}
-    .section{margin:32px 0}
-    ul{padding-left:20px}
-    li{margin:8px 0}
-    .contact{background:var(--card);padding:24px;border-radius:12px;border:1px solid var(--line);margin:32px 0}
-    .back-link{display:inline-block;margin-bottom:20px;color:var(--teal);text-decoration:none;font-weight:600}
-    .back-link:hover{text-decoration:underline}
-    footer{padding:24px 0;color:var(--muted);border-top:1px solid var(--line);margin-top:60px}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — RipCat</title>
+<meta name="description" content="RipCat Privacy Policy — how we collect, use, and protect your data. Short version: we don't want your data.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Privacy Policy — RipCat">
+<meta property="og:description" content="RipCat Privacy Policy — how we collect, use, and protect your data.">
+<meta property="og:url" content="https://ripcat.dev/privacy-policy.html">
+<link rel="canonical" href="https://ripcat.dev/privacy-policy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+.doc-hero{padding:72px 0 40px;background:
+  radial-gradient(800px 380px at 70% -60px, rgba(61,210,232,.10), transparent 60%), var(--m-base)}
+.doc-hero h1{font-size:clamp(2.2rem,4.6vw,3.2rem);font-weight:800;margin-bottom:14px}
+.doc-hero .lede{color:var(--m-text-2);font-size:1.0625rem;max-width:38rem}
+.updated{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:.8125rem;color:var(--m-text-3)}
+.updated::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--m-accent)}
+
+.tldr{padding:40px 0 8px}
+.tldr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tldr .metric .val{font-size:1.15rem;line-height:1.35;font-family:var(--f-body);font-weight:600}
+@media(max-width:820px){.tldr-grid{grid-template-columns:1fr}}
+
+.doc{padding:48px 0 88px}
+.doc .cols{display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:start}
+.toc{position:sticky;top:84px;font-size:.8125rem}
+.toc .t{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--m-text-3);margin-bottom:12px}
+.toc a{display:block;color:var(--m-text-2);text-decoration:none;padding:6px 0;border-left:2px solid var(--m-hairline);padding-left:14px}
+.toc a:hover{color:var(--m-accent);border-left-color:var(--m-accent)}
+@media(max-width:860px){.doc .cols{grid-template-columns:1fr}.toc{display:none}}
+
+.prose{max-width:44rem}
+.prose h2{font-size:1.4rem;font-weight:700;margin:44px 0 14px;padding-top:24px;border-top:1px solid var(--m-hairline)}
+.prose section:first-child h2{margin-top:0;padding-top:0;border-top:none}
+.prose h3{font-size:1.0625rem;font-weight:600;margin:24px 0 8px;color:var(--m-text)}
+.prose p{color:var(--m-text-2);margin:0 0 14px}
+.prose p b,.prose li b{color:var(--m-text);font-weight:600}
+.prose ul{list-style:none;margin:0 0 16px}
+.prose li{position:relative;padding:5px 0 5px 26px;color:var(--m-text-2)}
+.prose li::before{content:'';position:absolute;left:2px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--m-accent)}
+.prose .no li::before{background:var(--coral-dark)}
+.card{background:var(--m-card);border:1px solid var(--m-hairline);border-radius:var(--r-card);padding:24px;margin:24px 0}
+.card h2{border:none;margin:0 0 10px;padding:0}
+.prose a{color:var(--m-accent)}
+</style>
 </head>
 <body>
-  <header class="wrap">
-    <nav class="nav">
-      <a href="/" class="brand">🐱 RipCat</a>
-    </nav>
-  </header>
+<script>document.body.classList.add("js")</script>
 
-  <main class="wrap">
-    <div class="content">
-      <a href="/" class="back-link">← Back to RipCat</a>
-      
-      <h1>Privacy Policy</h1>
-      
-      <div class="updated">
-        <strong>Last Updated:</strong> March 5, 2026
-      </div>
+<nav class="site">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M2 17c3-6 6-6 9 0s6 6 9 0" stroke="#3DD2E8" stroke-width="2.6" stroke-linecap="round"/><path d="M5 9l3-5 2.5 4M21 9l-3-5-2.5 4" stroke="#3DD2E8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      RipCat
+    </a>
+    <div class="nav-links">
+      <a href="/#oracle">Features</a>
+      <a href="pro.html">RipCat Pro</a>
+      <a href="blog/">Blog</a>
+      <a class="nav-cta" href="https://apps.apple.com/us/app/ripcat-tide-predictions/id6760085664">Get the app</a>
+    </div>
+  </div>
+</nav>
 
+<header class="doc-hero">
+  <div class="wrap">
+    <p class="kicker">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="lede">The short version: RipCat doesn't want your data. No account, no tracking, no ads — your favorites live on your device and in your own iCloud. The long version follows.</p>
+    <span class="updated">Last updated March 5, 2026</span>
+  </div>
+</header>
+
+<div class="tldr">
+  <div class="wrap">
+    <div class="tldr-grid">
+      <div class="metric"><div class="lbl">Accounts</div><div class="val">None — the app never asks who you are</div></div>
+      <div class="metric"><div class="lbl">Your data lives</div><div class="val">On your device & in your iCloud</div></div>
+      <div class="metric"><div class="lbl">Sold or shared</div><div class="val">Never — there's nothing to sell</div></div>
+    </div>
+  </div>
+</div>
+
+<main class="doc">
+  <div class="wrap cols">
+    <aside class="toc" aria-label="Sections">
+      <p class="t">On this page</p>
+      <a href="#collect">1 · What we collect</a>
+      <a href="#use">2 · How we use it</a>
+      <a href="#sources">3 · Data sources</a>
+      <a href="#sharing">4 · Sharing & disclosure</a>
+      <a href="#storage">5 · Storage & security</a>
+      <a href="#rights">6 · Your rights & choices</a>
+      <a href="#children">7 · Children's privacy</a>
+      <a href="#intl">8 · International users</a>
+      <a href="#changes">9 · Changes</a>
+      <a href="#contact">10 · Contact</a>
+      <a href="#summary">11 · Summary</a>
+    </aside>
+
+    <div class="prose">
       <p>This Privacy Policy describes how RipCat ("we," "us," or "our") collects, uses, and protects your information when you use our mobile application and related services.</p>
 
-      <div class="section">
-        <h2>1. Information We Collect</h2>
-        
-        <h3>1.1 Location Information</h3>
+      <section id="collect">
+        <h2>1. Information we collect</h2>
+
+        <h3>1.1 Location information</h3>
         <p>RipCat may request access to your device's location to:</p>
         <ul>
           <li>Find the nearest tide stations to your current location</li>
           <li>Suggest relevant tide stations based on your area</li>
           <li>Provide location-specific tide forecasts</li>
         </ul>
-        <p>You can control location access through your device settings. RipCat works without location access, but you'll need to manually search for tide stations.</p>
+        <p>You can control location access through your device settings. RipCat works without location access — you'll just need to search for tide stations manually.</p>
 
-        <h3>1.2 User Preferences</h3>
+        <h3>1.2 User preferences</h3>
         <p>We store information you provide to personalize your experience:</p>
         <ul>
           <li>Favorite tide stations</li>
@@ -73,7 +127,7 @@
           <li>Subscription status and purchase history</li>
         </ul>
 
-        <h3>1.3 Technical Information</h3>
+        <h3>1.3 Technical information</h3>
         <p>We may automatically collect:</p>
         <ul>
           <li>Device type and operating system version</li>
@@ -81,146 +135,136 @@
           <li>Crash reports and performance data to improve the app</li>
         </ul>
 
-        <h3>1.4 Information We Don't Collect</h3>
+        <h3>1.4 Information we don't collect</h3>
         <p>RipCat does not collect:</p>
-        <ul>
+        <ul class="no">
           <li>Personal identification information (name, email, phone number)</li>
           <li>Photos, contacts, or other personal data</li>
           <li>Browsing history or data from other apps</li>
           <li>Precise location history or tracking data</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section">
-        <h2>2. How We Use Your Information</h2>
-        
-        <p>We use the information we collect to:</p>
+      <section id="use">
+        <h2>2. How we use your information</h2>
         <ul>
-          <li><strong>Provide tide forecasts:</strong> Access NOAA tide data and present it in an easy-to-use format</li>
-          <li><strong>Personalize your experience:</strong> Remember your favorite stations and preferences</li>
-          <li><strong>Improve the app:</strong> Analyze usage patterns to fix bugs and add features</li>
-          <li><strong>Sync across devices:</strong> Use iCloud to sync your favorites and settings across your iPhone, iPad, and Apple Watch</li>
-          <li><strong>Process subscriptions:</strong> Manage your RipCat Pro subscription through Apple's App Store</li>
+          <li><b>Provide tide forecasts:</b> access NOAA tide data and present it in an easy-to-use format</li>
+          <li><b>Personalize your experience:</b> remember your favorite stations and preferences</li>
+          <li><b>Improve the app:</b> analyze usage patterns to fix bugs and add features</li>
+          <li><b>Sync across devices:</b> use iCloud to sync your favorites and settings across your iPhone, iPad, and Apple Watch</li>
+          <li><b>Process subscriptions:</b> manage your RipCat Pro subscription through Apple's App Store</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section">
-        <h2>3. Data Sources</h2>
-        
-        <h3>3.1 NOAA Tide Data</h3>
+      <section id="sources">
+        <h2>3. Data sources</h2>
+        <h3>3.1 NOAA tide data</h3>
         <p>RipCat uses publicly available tide prediction data from the National Oceanic and Atmospheric Administration (NOAA). This data is provided by the U.S. government and is not subject to privacy restrictions.</p>
-
-        <h3>3.2 Apple Services</h3>
+        <h3>3.2 Apple services</h3>
         <p>RipCat integrates with Apple services including:</p>
         <ul>
-          <li><strong>iCloud:</strong> To sync your favorites and preferences across devices</li>
-          <li><strong>App Store:</strong> For subscription management and payments</li>
-          <li><strong>Apple Watch:</strong> To provide tide data on your wrist</li>
+          <li><b>iCloud:</b> to sync your favorites and preferences across devices</li>
+          <li><b>App Store:</b> for subscription management and payments</li>
+          <li><b>Apple Watch:</b> to provide tide data on your wrist</li>
         </ul>
         <p>These integrations are governed by Apple's Privacy Policy.</p>
-      </div>
+      </section>
 
-      <div class="section">
-        <h2>4. Data Sharing and Disclosure</h2>
-        
-        <p><strong>We do not sell, rent, or share your personal information with third parties.</strong></p>
-        
+      <section id="sharing">
+        <h2>4. Data sharing and disclosure</h2>
+        <p><b>We do not sell, rent, or share your personal information with third parties.</b></p>
         <p>We may disclose information only in these limited circumstances:</p>
         <ul>
-          <li><strong>Legal requirements:</strong> When required by law, court order, or government regulation</li>
-          <li><strong>Safety concerns:</strong> To protect the safety of our users or the public</li>
-          <li><strong>Business transfers:</strong> In connection with a merger, acquisition, or sale of assets (with user notification)</li>
+          <li><b>Legal requirements:</b> when required by law, court order, or government regulation</li>
+          <li><b>Safety concerns:</b> to protect the safety of our users or the public</li>
+          <li><b>Business transfers:</b> in connection with a merger, acquisition, or sale of assets (with user notification)</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section">
-        <h2>5. Data Storage and Security</h2>
-        
-        <h3>5.1 Local Storage</h3>
+      <section id="storage">
+        <h2>5. Data storage and security</h2>
+        <h3>5.1 Local storage</h3>
         <p>Most of your data is stored locally on your device and is protected by your device's security features (passcode, Touch ID, Face ID).</p>
-
-        <h3>5.2 iCloud Sync</h3>
+        <h3>5.2 iCloud sync</h3>
         <p>If you enable iCloud sync, your favorites and preferences are stored in your personal iCloud account and protected by Apple's security measures.</p>
-
-        <h3>5.3 No Remote Servers</h3>
+        <h3>5.3 No remote servers</h3>
         <p>RipCat does not operate remote servers for storing user data. All personal information stays on your devices or in your iCloud account.</p>
-      </div>
+      </section>
 
-      <div class="section">
-        <h2>6. Your Rights and Choices</h2>
-        
-        <h3>6.1 Location Services</h3>
-        <p>You can enable or disable location access in your device Settings > Privacy & Security > Location Services > RipCat.</p>
-
-        <h3>6.2 iCloud Sync</h3>
-        <p>You can control iCloud sync in the app settings or your device's iCloud settings.</p>
-
-        <h3>6.3 Data Deletion</h3>
+      <section id="rights">
+        <h2>6. Your rights and choices</h2>
+        <h3>6.1 Location services</h3>
+        <p>Enable or disable location access in Settings → Privacy &amp; Security → Location Services → RipCat.</p>
+        <h3>6.2 iCloud sync</h3>
+        <p>Control iCloud sync in the app settings or your device's iCloud settings.</p>
+        <h3>6.3 Data deletion</h3>
         <p>You can delete your data by:</p>
         <ul>
           <li>Clearing favorites and preferences in the app settings</li>
           <li>Deleting the app from your device</li>
           <li>Turning off iCloud sync for RipCat in your device settings</li>
         </ul>
+        <h3>6.4 Subscription management</h3>
+        <p>Manage your RipCat Pro subscription through the App Store app on your device.</p>
+      </section>
 
-        <h3>6.4 Subscription Management</h3>
-        <p>Manage your RipCat Pro subscription through the App Store app on your device or iTunes on your computer.</p>
-      </div>
-
-      <div class="section">
-        <h2>7. Children's Privacy</h2>
-        
+      <section id="children">
+        <h2>7. Children's privacy</h2>
         <p>RipCat is suitable for all ages and does not knowingly collect personal information from children under 13. The app focuses solely on tide data and does not contain social features or user-generated content.</p>
-      </div>
+      </section>
 
-      <div class="section">
-        <h2>8. International Users</h2>
-        
+      <section id="intl">
+        <h2>8. International users</h2>
         <p>RipCat is primarily designed for users in the United States and uses NOAA data which covers U.S. coastal areas. While the app may be available internationally, tide data coverage is limited to NOAA stations.</p>
-      </div>
+      </section>
 
-      <div class="section">
-        <h2>9. Changes to This Policy</h2>
-        
+      <section id="changes">
+        <h2>9. Changes to this policy</h2>
         <p>We may update this Privacy Policy from time to time. When we do:</p>
         <ul>
-          <li>We will update the "Last Updated" date at the top of this policy</li>
+          <li>We will update the "Last updated" date at the top of this policy</li>
           <li>We will notify users of significant changes through the app or App Store updates</li>
           <li>Continued use of the app constitutes acceptance of the updated policy</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="contact">
-        <h2>10. Contact Us</h2>
-        
-        <p>If you have questions about this Privacy Policy or our privacy practices, please contact us:</p>
-        
-        <p><strong>Email:</strong> privacy@ripcat.dev<br/>
-        <strong>Subject:</strong> RipCat Privacy Policy Question</p>
-        
-        <p>We will respond to privacy inquiries within 30 days.</p>
-      </div>
+      <section id="contact">
+        <div class="card">
+          <h2>10. Contact us</h2>
+          <p>Questions about this policy or our privacy practices:</p>
+          <p><b>Email:</b> <a href="mailto:privacy@ripcat.dev">privacy@ripcat.dev</a><br>
+          <b>Subject:</b> RipCat Privacy Policy Question</p>
+          <p style="margin-bottom:0">We respond to privacy inquiries within 30 days.</p>
+        </div>
+      </section>
 
-      <div class="section">
+      <section id="summary">
         <h2>11. Summary</h2>
-        
-        <p><strong>RipCat is designed with privacy in mind:</strong></p>
+        <p><b>RipCat is designed with privacy in mind:</b></p>
         <ul>
-          <li>✅ No personal information required</li>
-          <li>✅ Data stays on your devices or in your iCloud</li>
-          <li>✅ No remote servers or tracking</li>
-          <li>✅ No data sharing with third parties</li>
-          <li>✅ Transparent about what we collect and why</li>
-          <li>✅ You control location access and iCloud sync</li>
+          <li>No personal information required</li>
+          <li>Data stays on your devices or in your iCloud</li>
+          <li>No remote servers or tracking</li>
+          <li>No data sharing with third parties</li>
+          <li>Transparent about what we collect and why</li>
+          <li>You control location access and iCloud sync</li>
         </ul>
-        
-        <p><em>RipCat is a simple, privacy-focused tide app that helps you catch more waves without compromising your data.</em></p>
-      </div>
+        <p><i>RipCat is a simple, privacy-focused tide app that helps you catch more waves without compromising your data.</i></p>
+      </section>
     </div>
-  </main>
+  </div>
+</main>
 
-  <footer class="wrap">
-    <p>© 2026 RipCat — <a href="/" style="color: var(--teal);">Homepage</a> • <a href="/privacy-policy.html" style="color: var(--teal);">Privacy Policy</a></p>
-  </footer>
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 RipCat · Made in Santa Barbara. See you out there — keep it fishy.</div>
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <a href="pro.html">RipCat Pro</a>
+      <a href="blog/">Blog</a>
+      <a href="mailto:hello@ripcat.dev">hello@ripcat.dev</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

@@ -20,6 +20,14 @@ done
 shopt -s nullglob
 for f in "$RAW"/*.png; do
   base=$(basename "$f" .png)
+  # Animation frames become light JPEGs (the site cross-fades several at once).
+  if [[ "$base" == *sca-frame-* ]]; then
+    n="${base##*sca-frame-}"
+    out="$DEST/anim-sca-${n}.jpg"
+    sips -Z 900 -s format jpeg -s formatOptions 74 "$f" --out "$out" >/dev/null
+    echo "processed $out ($(du -h "$out" | cut -f1))"
+    continue
+  fi
   case "$base" in
     iPad*)  MAX=1600;;   # iPad landscape/portrait hero
     *watch*) MAX=800;;   # watch face
@@ -30,4 +38,4 @@ for f in "$RAW"/*.png; do
   size=$(du -h "$out" | cut -f1)
   echo "processed $out ($size)"
 done
-echo "Done. Reference as i/app-<device>-<scene>.png"
+echo "Done. Reference as i/app-<device>-<scene>.png (animation frames: i/anim-sca-N.jpg)"

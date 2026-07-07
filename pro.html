@@ -45,8 +45,17 @@
 .checks li b{font-weight:600;color:var(--m-text)}
 .checks li::before{content:'✓';font-weight:800;position:absolute;left:0;top:8px}
 .aside{border-left:3px solid;padding:2px 0 2px 18px;font-size:.9375rem;margin:26px 0;color:var(--m-text-2)}
-.cta-line{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:30px}
+.cta-line{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;margin-top:30px}
 .price-whisper{font-size:.8125rem;color:var(--m-text-3)}
+/* SCA day-by-day animation: real captures cross-faded inside the device frame */
+.anim-stack{position:relative}
+.anim-stack img{border-radius:34px}
+.anim-stack img.f{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.anim-stack img.f.on{opacity:1}
+.media-pair{display:flex;align-items:flex-start;justify-content:center}
+.media-pair>:first-child{margin-right:-44px;z-index:1}
+.media-pair>:last-child{margin-top:64px}
+@media(max-width:480px){.media-pair{flex-direction:column;align-items:center}.media-pair>:first-child{margin-right:0}.media-pair>:last-child{margin-top:24px}}
 .shot-cap{font-size:.75rem;color:var(--m-text-3);margin-top:14px;text-align:center}
 @media(max-width:900px){.cohort .inner{grid-template-columns:1fr;gap:44px}.cohort{padding:76px 0}}
 
@@ -213,8 +222,8 @@ thead th:last-child{background:var(--teal-text);color:#fff}
       <p class="lede rv">You know the drill: one government site for tides, another for the marine forecast, a third for the buoy — all in tables built in 1997, on a phone with one bar at the harbor mouth.</p>
       <p class="rv">RipCat puts the same official data on one screen: NOAA tide predictions you can scrub to the minute you actually transit, NWS Small Craft Advisories painted on the map with a day-by-day timeline, and live buoy wind, waves, and pressure from outside the harbor.</p>
       <ul class="checks">
-        <li class="rv"><b>Small Craft Advisories, on a timeline.</b> Scrub the week and watch advisories sweep the coast — before you promise the family a Wednesday sail.</li>
-        <li class="rv"><b>The advisory, in plain words.</b> Tap the zone: what's in effect, until when, winds and seas, straight from the NWS.</li>
+        <li class="rv"><b>Small Craft Advisories, on a timeline.</b> Scrub the week and watch advisories sweep in and clear, day by day — before you promise the family a Wednesday sail.</li>
+        <li class="rv"><b>The full marine forecast, one tap away.</b> Outlook by day at a glance, then every period — winds, seas, wave detail — in the NWS's own words.</li>
         <li class="rv"><b>Your harbors, in order.</b> Home slip, the fuel dock, the island anchorage — unlimited favorites, synced across iPhone, iPad, and the Mac at the nav desk.</li>
         <li class="rv"><b>Works past the breakwater.</b> Cached tide and buoy data keep answering where cell coverage doesn't.</li>
         <li class="rv"><b>A calendar for the chart table.</b> Print the month's tides, ink-friendly, and clip it next to the logbook.</li>
@@ -227,8 +236,18 @@ thead th:last-child{background:var(--teal-text);color:#fff}
     </div>
     <div class="f-media rv">
       <div>
-        <div class="frame-iphone"><img src="i/app-iPhone-17-Pro-zone-glance.png" alt="RipCat marine zone summary for PZZ650: Small Craft Advisory in effect until 2 PM, NW wind 10 to 15 kt becoming W 20 to 30 kt, seas 4 to 6 ft, painted zones on the map" loading="lazy"></div>
-        <p class="shot-cap">PZZ650 with a live Small Craft Advisory — the pre-departure check. Real capture.</p>
+        <div class="media-pair">
+          <div class="frame-iphone sm">
+            <div class="anim-stack" id="sca-anim">
+              <img src="i/anim-sca-0.jpg" alt="RipCat marine map animation: the Small Craft Advisory timeline stepping through the week — advisory zones painted across the Santa Barbara Channel, then clearing" loading="lazy">
+              <img class="f" src="i/anim-sca-1.jpg" alt="" loading="lazy">
+              <img class="f" src="i/anim-sca-2.jpg" alt="" loading="lazy">
+              <img class="f" src="i/anim-sca-3.jpg" alt="" loading="lazy">
+            </div>
+          </div>
+          <div class="frame-iphone sm"><img src="i/app-iPhone-17-Pro-zone-forecast.png" alt="RipCat marine forecast for PZZ650: Small Craft Advisory banner, outlook-by-day strip flagging today AM, PM, and evening, and the full daily forecast text" loading="lazy"></div>
+        </div>
+        <p class="shot-cap">The week sweeping the chart, and the full forecast — outlook by day, then every period. Real captures.</p>
       </div>
     </div>
   </div>
@@ -314,6 +333,19 @@ thead th:last-child{background:var(--teal-text);color:#fff}
 <script>
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// SCA day-by-day animation: cross-fade the captured timeline steps.
+(function(){
+  const stack=document.getElementById('sca-anim');
+  if(!stack||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const frames=stack.querySelectorAll('img.f');
+  let i=0;
+  setInterval(()=>{
+    i=(i+1)%(frames.length+1);
+    // i===0 shows the base frame (all overlays off)
+    frames.forEach((f,n)=>f.classList.toggle('on',n===i-1));
+  },2400);
+})();
 </script>
 </body>
 </html>
