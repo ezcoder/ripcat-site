@@ -1,0 +1,33 @@
+#!/bin/bash
+# process-screens.sh — normalize raw simulator captures into optimized site assets.
+# Resizes to web-friendly sizes (per styleguide-web.md §8) and writes into i/.
+#
+# Usage: tools/process-screens.sh [--raw DIR] [--dest DIR]
+set -euo pipefail
+
+SITE="$(cd "$(dirname "$0")/.." && pwd)"
+RAW="$SITE/i/raw"
+DEST="$SITE/i"
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --raw) RAW="$2"; shift 2;;
+    --dest) DEST="$2"; shift 2;;
+    *) echo "unknown arg: $1" >&2; exit 1;;
+  esac
+done
+
+shopt -s nullglob
+for f in "$RAW"/*.png; do
+  base=$(basename "$f" .png)
+  case "$base" in
+    iPad*)  MAX=1600;;   # iPad landscape/portrait hero
+    *watch*) MAX=800;;   # watch face
+    *)      MAX=1200;;   # iPhone portrait
+  esac
+  out="$DEST/app-${base}.png"
+  sips -Z "$MAX" "$f" --out "$out" >/dev/null
+  size=$(du -h "$out" | cut -f1)
+  echo "processed $out ($size)"
+done
+echo "Done. Reference as i/app-<device>-<scene>.png"
