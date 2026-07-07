@@ -47,11 +47,11 @@ nav.site .wrap{display:flex;align-items:center;justify-content:space-between;hei
 .center .sec-title,.center .sec-sub{margin-left:auto;margin-right:auto}
 
 /* ---------- buttons ---------- */
-.btn-store{display:inline-flex;align-items:center;gap:12px;background:#fff;color:var(--deep-navy);text-decoration:none;padding:13px 24px;border-radius:14px;font-weight:700;font-size:1rem;transition:transform .16s ease-out,box-shadow .16s ease-out;box-shadow:0 8px 28px rgba(0,0,0,.4)}
-.btn-store:hover{transform:translateY(-2px)}
-.btn-store .apple{font-size:1.35rem;line-height:1}
-.btn-store small{display:block;font-size:.68rem;font-weight:500;color:#6b6980;line-height:1.1;text-align:left}
-.btn-store span b{display:block;line-height:1.15}
+/* Official Apple App Store badge — artwork must not be modified (Apple marketing
+   guidelines). Height >= 40px, clear space = 1/4 badge height on all sides. */
+.store-badge{display:inline-block;padding:14px;line-height:0}
+.store-badge img{height:54px;width:auto}
+.store-badge:hover img{opacity:.88}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;padding:13px 26px;border-radius:var(--r-control);font-weight:700;font-size:1rem;transition:transform .16s ease-out,background .16s}
 .btn:hover{transform:translateY(-2px)}
 .btn-accent{background:var(--ocean-teal);color:var(--deep-navy)}
