@@ -144,7 +144,10 @@ urls = [
     ("https://ripcat.dev/", None),
     ("https://ripcat.dev/pro.html", None),
     ("https://ripcat.dev/privacy-policy.html", None),
-    ("https://ripcat.dev/blog/", "2026-07-07"),
+    # Keep current non-station site URLs while the pilot branch waits for approval.
+    ("https://ripcat.dev/blog/", "2026-07-21"),
+    ("https://ripcat.dev/blog/how-to-read-a-buoy-report.html", "2026-07-21"),
+    ("https://ripcat.dev/blog/what-small-craft-advisory-means.html", "2026-07-14"),
     ("https://ripcat.dev/blog/how-tide-predictions-work.html", "2026-07-07"),
     ("https://ripcat.dev/tides/ca/", TODAY),
 ]
