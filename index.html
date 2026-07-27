@@ -6,7 +6,7 @@
     <title>RipCat — A weather oracle in your pocket</title>
     <meta
       name="description"
-      content="NOAA tides, live buoys, marine advisories, and device-local Ocean Alerts for the U.S. coast — on iPhone, iPad, Apple Watch, and Mac."
+      content="NOAA tides, live buoys, marine advisories, and a Hurricane Map with tracks, cones, categories, and wind fields — processed directly on your device."
     />
     <meta name="apple-itunes-app" content="app-id=6760085664" />
     <meta
@@ -15,7 +15,7 @@
     />
     <meta
       property="og:description"
-      content="Know the tide before you go. NOAA tides, live buoys, marine advisories, and Ocean Alerts — at a glance, on every Apple device."
+      content="NOAA tides, live buoys, marine advisories, and hurricane tracks, cones, categories, and wind fields — at a glance."
     />
     <meta property="og:image" content="https://ripcat.dev/i/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -28,7 +28,7 @@
     />
     <meta
       name="twitter:description"
-      content="NOAA tides, live buoys, marine advisories, and Ocean Alerts at a glance."
+      content="NOAA tides, live buoys, marine advisories, and a direct-on-device Hurricane Map."
     />
     <meta name="twitter:image" content="https://ripcat.dev/i/og-image.jpg" />
     <link rel="canonical" href="https://ripcat.dev/" />
@@ -421,6 +421,202 @@
         font-size: 1.0625rem;
         margin-bottom: 34px;
       }
+      .hurricane-feature {
+        position: relative;
+        overflow: clip;
+        background:
+          radial-gradient(
+            760px 520px at 82% 42%,
+            rgba(61, 210, 232, 0.1),
+            transparent 66%
+          ),
+          radial-gradient(
+            520px 420px at 12% 80%,
+            rgba(242, 192, 64, 0.06),
+            transparent 70%
+          ),
+          var(--m-base);
+      }
+      .hurricane-feature .inner {
+        grid-template-columns: 0.88fr 1.12fr;
+      }
+      .hurricane-feature .kicker {
+        color: var(--gold);
+      }
+      .hurricane-source {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin: 0 0 18px !important;
+        padding: 7px 12px;
+        border: 1px solid rgba(61, 210, 232, 0.18);
+        border-radius: 999px;
+        background: rgba(61, 210, 232, 0.06);
+        color: var(--m-text-2) !important;
+        font-size: 0.76rem;
+        font-weight: 650;
+        letter-spacing: 0.01em;
+      }
+      .hurricane-source b {
+        color: var(--m-accent);
+      }
+      .hurricane-source span {
+        color: var(--m-text-3);
+      }
+      .hurricane-safety {
+        margin-top: 22px !important;
+        padding-left: 14px;
+        border-left: 2px solid rgba(242, 192, 64, 0.72);
+        color: var(--m-text-3) !important;
+        font-size: 0.78rem;
+        line-height: 1.55;
+      }
+      .hurricane-media {
+        width: min(100%, 620px);
+        min-height: 520px;
+        padding: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        background:
+          radial-gradient(
+            circle at 50% 46%,
+            rgba(61, 210, 232, 0.12),
+            transparent 38%
+          ),
+          linear-gradient(155deg, #111a26, #080d14 72%);
+      }
+      .hurricane-showcase {
+        width: 100%;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(140px, 0.62fr);
+        gap: 18px;
+        align-items: center;
+      }
+      .hurricane-capture,
+      .hurricane-still-card {
+        min-width: 0;
+        margin: 0;
+      }
+      .hurricane-capture-frame {
+        padding: 7px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 38px;
+        background: #080a10;
+        box-shadow: 0 26px 70px rgba(0, 0, 0, 0.52);
+      }
+      .hurricane-video {
+        width: 100%;
+        aspect-ratio: 1206 / 2622;
+        display: block;
+        object-fit: cover;
+        border-radius: 31px;
+        background: #07101a;
+      }
+      .hurricane-capture figcaption,
+      .hurricane-still-card figcaption {
+        margin-top: 12px;
+        color: var(--m-text-3);
+        font-size: 0.72rem;
+        line-height: 1.4;
+      }
+      .hurricane-capture figcaption b,
+      .hurricane-still-card figcaption b {
+        display: block;
+        margin-bottom: 2px;
+        color: var(--m-text-2);
+        font-weight: 650;
+      }
+      .hurricane-still-frame {
+        padding: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 29px;
+        background: #080a10;
+        box-shadow: 0 20px 54px rgba(0, 0, 0, 0.42);
+        transform: rotate(1.2deg);
+      }
+      .hurricane-still-frame img {
+        width: 100%;
+        border-radius: 23px;
+      }
+      .hurricane-media-note {
+        grid-column: 1 / -1;
+        margin: 2px 0 0 !important;
+        color: var(--m-text-3) !important;
+        font-size: 0.7rem !important;
+        text-align: center;
+      }
+      .hurricane-media-note b {
+        color: var(--m-accent);
+        font-weight: 650;
+      }
+      .hurricane-media-note span {
+        margin: 0 5px;
+        color: rgba(255, 255, 255, 0.22);
+      }
+      .hurricane-video:focus-visible {
+        outline: 3px solid var(--m-accent);
+        outline-offset: 4px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hurricane-still-frame {
+          transform: none;
+        }
+      }
+      @media (max-width: 900px) {
+        .hurricane-feature .inner {
+          grid-template-columns: 1fr;
+        }
+        .hurricane-media {
+          min-height: 440px;
+        }
+      }
+      @media (max-width: 520px) {
+        .hurricane-media {
+          min-height: 0;
+          padding: 16px;
+          border-radius: 24px;
+        }
+        .hurricane-showcase {
+          grid-template-columns: minmax(0, 1fr) minmax(105px, 0.56fr);
+          gap: 12px;
+        }
+        .hurricane-capture-frame {
+          padding: 5px;
+          border-radius: 29px;
+        }
+        .hurricane-video {
+          border-radius: 24px;
+        }
+        .hurricane-still-frame {
+          padding: 4px;
+          border-radius: 21px;
+        }
+        .hurricane-still-frame img {
+          border-radius: 17px;
+        }
+        .hurricane-capture figcaption,
+        .hurricane-still-card figcaption {
+          font-size: 0.66rem;
+        }
+        .hurricane-media-note {
+          font-size: 0.64rem !important;
+        }
+      }
+      .hurricane-media a {
+        color: var(--m-accent);
+      }
+      .hurricane-media a:hover {
+        color: var(--teal-dark);
+      }
+      .hurricane-media a:focus-visible {
+        outline: 2px solid var(--m-accent);
+        outline-offset: 3px;
+      }
+      .hurricane-media small {
+        color: var(--m-text-3);
+        font-size: 0.76rem;
+      }
       .alert-demo {
         width: min(360px, 86vw);
         padding: 24px;
@@ -645,10 +841,106 @@
         <span><b>NOAA</b> tide predictions</span
         ><span><b>NWS</b> marine advisories</span
         ><span><b>NDBC</b> live buoys</span
-        ><span>The same public sources marine professionals use</span>
+        ><span><b>NHC · CPHC</b> hurricane forecasts</span>
       </div>
     </div>
-    <section class="feature" id="oracle">
+    <section class="feature hurricane-feature" id="oracle">
+      <div class="wrap inner">
+        <div>
+          <p class="kicker rv">Hurricane Map · NOAA NHC + CPHC</p>
+          <h2 class="rv">
+            A hurricane map that knows the cone isn't the storm.
+          </h2>
+          <p class="rv">
+            RipCat draws the latest public forecast advisory on your map:
+            <b>forecast track, cone, category, and wind-field footprint</b>.
+            NOAA feeds come straight from the National Hurricane Center and
+            Central Pacific Hurricane Center; RipCat parses, validates, and
+            caches them on your device, with no RipCat weather server in the
+            middle.
+          </p>
+          <p class="hurricane-source rv">
+            <b>Direct NOAA public feeds</b>
+            <span aria-hidden="true">·</span>
+            Parsed + cached on device
+          </p>
+          <ul class="f-points">
+            <li class="rv">
+              <b>Track + cone</b> — forecast positions and the forecast cone
+              stay together as you move around the map.
+            </li>
+            <li class="rv">
+              <b>Category + wind fields</b> — read the advisory intensity and
+              34, 50, and 64-knot wind extents when the provider reports them.
+            </li>
+            <li class="rv">
+              <b>Eastern Pacific, too</b> — follow storms off Mexico alongside
+              Atlantic and Central Pacific systems.
+            </li>
+          </ul>
+          <p class="hurricane-safety rv">
+            The cone is forecast-center uncertainty, not storm size. Hurricane
+            forecasts can change quickly, and wind or other effects can extend
+            beyond the cone. RipCat is not an emergency-alert or navigation
+            service. Follow official watches, warnings, evacuation guidance,
+            and the latest NOAA/NHC/CPHC advisories.
+          </p>
+        </div>
+        <div class="f-media rv">
+          <div class="hurricane-media">
+            <div class="hurricane-showcase">
+              <figure class="hurricane-capture">
+                <div class="hurricane-capture-frame">
+                  <video
+                    class="hurricane-video"
+                    controls
+                    muted
+                    playsinline
+                    preload="metadata"
+                    poster="i/app-iPhone-17-Pro-hurricane-map-full-track.webp"
+                    aria-label="Silent 48-second simulator walkthrough of RipCat's Hurricane Map for Hurricane Genevieve, including the current Category 4 advisory, forecast track and cone, 34, 50, and 64-knot wind extents, and forecast-time playback"
+                  >
+                    <source
+                      src="i/app-iPhone-17-Pro-hurricane-map-genevieve.mp4"
+                      type="video/mp4"
+                    />
+                    Your browser cannot play the Hurricane Map walkthrough.
+                    <a
+                      href="i/app-iPhone-17-Pro-hurricane-map-genevieve.mp4"
+                      >Open the MP4 video.</a
+                    >
+                  </video>
+                </div>
+                <figcaption>
+                  <b>Current advisory + full track</b>
+                  Genevieve · Eastern Pacific · NHC advisory 11
+                </figcaption>
+              </figure>
+              <figure class="hurricane-still-card">
+                <div class="hurricane-still-frame">
+                  <img
+                    src="i/app-iPhone-17-Pro-hurricane-map-plus-48h.webp"
+                    width="1206"
+                    height="2622"
+                    loading="lazy"
+                    alt="RipCat Hurricane Map at Genevieve's plus 48-hour forecast point, showing Category 3 at 110 knots with the selected position and wind extents off Mexico"
+                  />
+                </div>
+                <figcaption>
+                  <b>Forecast · +48 hours</b>
+                  Category, position, and wind fields move together
+                </figcaption>
+              </figure>
+              <p class="hurricane-media-note">
+                <b>Real simulator capture</b><span aria-hidden="true">·</span
+                >48 seconds<span aria-hidden="true">·</span>No audio
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="feature">
       <div class="wrap inner">
         <div>
           <p class="kicker rv">Marine timeline</p>
@@ -1098,9 +1390,9 @@
         </div>
         <p class="disclaimer">
           Screens on this page are real captures from the shipping app. RipCat
-          shows official NOAA, NWS, and NDBC data for U.S. coastal stations.
-          Predictions are predictions, not guarantees — and never navigation
-          advice.
+          uses public NOAA data, including NWS, NDBC, NHC, and CPHC products.
+          Predictions and forecasts can change, are not guarantees, and are
+          never navigation or emergency guidance.
         </p>
       </div>
     </footer>
