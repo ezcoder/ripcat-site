@@ -139,20 +139,37 @@ for s in stations:
     out.mkdir(parents=True, exist_ok=True)
     (out / 'index.html').write_text(html, encoding='utf-8')
 
-# Rewrite sitemap with existing core pages plus pilot URLs.
-urls = [
-    ("https://ripcat.dev/", None),
-    ("https://ripcat.dev/pro.html", None),
-    ("https://ripcat.dev/privacy-policy.html", None),
-    # Keep current non-station site URLs while the pilot branch waits for approval.
-    ("https://ripcat.dev/blog/", "2026-07-21"),
-    ("https://ripcat.dev/blog/how-to-read-a-buoy-report.html", "2026-07-21"),
-    ("https://ripcat.dev/blog/what-small-craft-advisory-means.html", "2026-07-14"),
-    ("https://ripcat.dev/blog/how-tide-predictions-work.html", "2026-07-07"),
-    ("https://ripcat.dev/tides/ca/", TODAY),
-]
+# Rewrite sitemap while preserving non-station URLs that may have landed on main
+# while the pilot branch waits for approval (for example newer blog posts).
+def existing_sitemap_urls():
+    sitemap = ROOT / 'sitemap.xml'
+    if not sitemap.exists():
+        return []
+    text = sitemap.read_text(encoding='utf-8')
+    rows = []
+    for match in re.finditer(r'<url>\s*<loc>([^<]+)</loc>(?:\s*<lastmod>([^<]+)</lastmod>)?\s*</url>', text):
+        loc, lastmod = match.group(1), match.group(2)
+        if loc.startswith('https://ripcat.dev/tides/ca/'):
+            continue
+        rows.append((loc, lastmod))
+    return rows
+
+urls = existing_sitemap_urls()
+if not urls:
+    urls = [
+        ("https://ripcat.dev/", None),
+        ("https://ripcat.dev/pro.html", None),
+        ("https://ripcat.dev/privacy-policy.html", None),
+    ]
+seen = {loc for loc, _ in urls}
+def add_url(loc, lastmod):
+    if loc not in seen:
+        urls.append((loc, lastmod))
+        seen.add(loc)
+
+add_url("https://ripcat.dev/tides/ca/", TODAY)
 for s in stations:
-    urls.append((f"https://ripcat.dev/tides/ca/{s['slug']}/", TODAY))
+    add_url(f"https://ripcat.dev/tides/ca/{s['slug']}/", TODAY)
 lines = ['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 for loc,lastmod in urls:
     if lastmod:
