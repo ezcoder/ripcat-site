@@ -11,6 +11,7 @@ tools/capture-screens.sh                     # iPhone (default) — builds, boot
 tools/capture-screens.sh --device "iPad Pro 13-inch (M5)"
 tools/capture-watch.sh                       # Apple Watch main screen
 tools/process-screens.sh                     # resize/optimize i/raw/* -> i/app-*.png
+tools/capture-blog-feature.sh --list         # semantic blog feature-shot names
 ```
 
 Full refresh:
@@ -39,6 +40,36 @@ changed. `--only scene1,scene2` re-captures a subset.)
 
 Add a scene = add a line to `scenes.conf`. Settle seconds are the wait for live
 NOAA/NWS/NDBC data to render (data is live; only location, favorites, and Pro are seeded).
+
+## Blog feature shots
+
+Blog posts should use feature-specific, real app screenshots instead of stock art
+or generic homepage captures. Use `tools/capture-blog-feature.sh` to map a
+teaching point to a stable semantic asset name:
+
+```bash
+tools/capture-blog-feature.sh --list
+tools/capture-blog-feature.sh tide-curve
+tools/capture-blog-feature.sh buoy-context --refresh
+```
+
+`--refresh` first captures the mapped scene from the simulator, then processes
+the screenshot and writes the semantic blog asset. Without `--refresh`, the tool
+copies the current processed screenshot into the blog asset name.
+
+Current mappings:
+
+| Feature | Scene | Blog asset |
+|---|---|---|
+| `station-selection` | `favorites` | `i/blog-tide-stations.{png,webp}` |
+| `tide-curve` | `today` | `i/blog-tide-curve.{png,webp}` |
+| `buoy-context` | `buoy-detail` | `i/blog-buoy-context.{png,webp}` |
+| `local-geography` | `map-sca-timeline` | `i/blog-local-geography.{png,webp}` |
+| `forecast-context` | `zone-forecast` | `i/blog-use-predictions.{png,webp}` |
+
+Use the onboarding-tour capture tooling for social feature cards when the tour
+overlay is the point. Use these screenshot-mode scenes for clean editorial blog
+figures.
 
 ## App-side hooks (in the app repo)
 
