@@ -78,8 +78,9 @@ def require(condition: bool, errors: list[str], message: str) -> None:
         errors.append(message)
 
 
-def script_types(parser: PageParser) -> set[str]:
+def script_types(parser: PageParser) -> tuple[set[str], list[str]]:
     found = set()
+    contexts: list[str] = []
     for typ, body in parser.scripts:
         if typ != "application/ld+json":
             continue
@@ -88,7 +89,8 @@ def script_types(parser: PageParser) -> set[str]:
         except json.JSONDecodeError:
             continue
         found.add(str(data.get("@type", "")))
-    return found
+        contexts.append(str(data.get("@context", "")))
+    return found, contexts
 
 
 def validate_station_page(path: Path) -> list[str]:
@@ -111,9 +113,10 @@ def validate_station_page(path: Path) -> list[str]:
     meta_names = {(m.get("name") or m.get("property"), m.get("content", "")) for m in parser.meta}
     require(any(name == "apple-itunes-app" and "app-id=6760085664" in content for name, content in meta_names), errors, f"{path}: missing smart app banner")
 
-    ld_types = script_types(parser)
+    ld_types, ld_contexts = script_types(parser)
     require("Place" in ld_types, errors, f"{path}: missing JSON-LD Place")
     require("BreadcrumbList" in ld_types, errors, f"{path}: missing JSON-LD BreadcrumbList")
+    require(all(context == "https://schema.org" for context in ld_contexts), errors, f"{path}: JSON-LD @context must be https://schema.org")
 
     station_links = [href for href in parser.links if href.startswith("/tides/ca/") and href != "/tides/ca/" and href != f"/tides/ca/{slug}/"]
     require(len(station_links) >= 5, errors, f"{path}: expected at least 5 nearby station links, found {len(station_links)}")
